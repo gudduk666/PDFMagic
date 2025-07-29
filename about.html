@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Learn about PDFMagic, your trusted platform for free online PDF tools. Discover our mission, team, and commitment to secure and easy PDF solutions.">
-    <meta name="keywords" content="about pdfmagic, pdf tools, free pdf tools, pdfmagic team, pdf solutions">
+    <meta name="description" content="Learn about PDFMagic, your trusted platform for free online PDF tools. Discover our mission and team.">
+    <meta name="keywords" content="about pdfmagic, pdf tools, free pdf tools, merge pdf, compress pdf">
     <meta name="robots" content="index, follow">
     <meta name="author" content="PDFMagic Team">
     <title>About Us - PDFMagic</title>
@@ -52,6 +52,7 @@
         .logo {
             display: flex;
             align-items: center;
+            cursor: pointer;
         }
 
         .logo i {
@@ -98,14 +99,11 @@
             display: flex;
             align-items: center;
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-        }
-
-        nav ul li a i {
-            margin-right: 0.5rem;
+            border: 1px solid transparent;
         }
 
         nav ul li a:hover {
-            background: linear-gradient(135deg, #2980b9, #6c3483);
+            background: #e74c3c;
             transform: translateY(-2px);
             box-shadow: 0 4px 10px rgba(0,0,0,0.3);
         }
@@ -167,7 +165,7 @@
         }
 
         .dropdown-menu li a:hover {
-            background: linear-gradient(135deg, #2980b9, #6c3483);
+            background: #e74c3c;
             color: #ffffff;
             transform: translateY(-2px);
             box-shadow: 0 4px 10px rgba(0,0,0,0.3);
@@ -246,8 +244,8 @@
             }
         }
 
-        /* About Us Section */
-        .about-hero {
+        /* Hero Section */
+        .hero {
             background: linear-gradient(135deg, #3498db 0%, #8e44ad 100%);
             color: white;
             padding: clamp(4rem, 10vw, 6.25rem) 0 clamp(3rem, 8vw, 4.375rem);
@@ -258,7 +256,7 @@
             overflow: hidden;
         }
 
-        .about-hero::before {
+        .hero::before {
             content: '';
             position: absolute;
             top: 0;
@@ -269,7 +267,7 @@
             background-size: cover;
         }
 
-        .about-hero h2 {
+        .hero h2 {
             font-family: 'Poppins', sans-serif;
             font-size: clamp(1.8rem, 5vw, 3.2rem);
             font-weight: 700;
@@ -278,13 +276,22 @@
             margin-left: auto;
             margin-right: auto;
             text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            white-space: nowrap;
         }
 
-        .about-hero p {
+        .hero p {
             font-size: clamp(1rem, 3vw, 1.3rem);
             max-width: 700px;
             margin: 0 auto 1.875rem;
             opacity: 0.95;
+        }
+
+        /* About Section */
+        .about {
+            padding: clamp(3rem, 8vw, 5rem) 0;
+            background-color: #ffffff;
+            border-radius: 1.875rem;
+            margin: 3.125rem 0;
         }
 
         .section-title {
@@ -321,71 +328,15 @@
         }
 
         .about-content {
-            background-color: #f1f2f6;
-            padding: clamp(3rem, 8vw, 5rem) 0;
-            border-radius: 1.875rem;
-            margin: 3.125rem 0;
-        }
-
-        .about-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(clamp(250px, 30vw, 300px), 1fr));
-            gap: clamp(1.5rem, 4vw, 2.1875rem);
-        }
-
-        .about-card {
-            background-color: white;
-            border-radius: 0.9375rem;
-            padding: clamp(1.875rem, 5vw, 2.5rem) 1.875rem;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            max-width: 800px;
+            margin: 0 auto;
             text-align: center;
-            transition: transform 0.3s;
         }
 
-        .about-card:hover {
-            transform: translateY(-8px);
-        }
-
-        .about-icon {
-            font-size: clamp(2rem, 5vw, 3.125rem);
-            margin-bottom: 1.5625rem;
-            background: linear-gradient(135deg, #3498db, #8e44ad);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .about-card h3 {
-            font-size: clamp(1.3rem, 3.5vw, 1.7rem);
-            margin-bottom: 0.9375rem;
-            color: #2c3e50;
-        }
-
-        .about-card p {
+        .about-content p {
             color: #7f8c8d;
-            font-size: clamp(0.9rem, 2.5vw, 1.05rem);
-        }
-
-        .cta-section {
-            text-align: center;
-            padding: 3.75rem 0;
-        }
-
-        .cta-section a {
-            display: inline-block;
-            background: linear-gradient(135deg, #3498db, #8e44ad);
-            color: white;
-            padding: 0.9375rem 1.875rem;
-            border-radius: 0.5rem;
-            text-decoration: none;
-            font-family: 'Poppins', sans-serif;
-            font-size: clamp(1rem, 2.5vw, 1.125rem);
-            font-weight: 500;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .cta-section a:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            font-size: clamp(1rem, 3vw, 1.2rem);
+            margin-bottom: 1.5rem;
         }
 
         /* Footer */
@@ -484,16 +435,12 @@
 
         /* Responsive Design */
         @media (max-width: 992px) {
-            .about-hero h2 {
+            .hero h2 {
                 font-size: clamp(1.8rem, 4.5vw, 2.8rem);
             }
             
-            .about-hero p {
+            .hero p {
                 font-size: clamp(0.875rem, 2.5vw, 1.1rem);
-            }
-            
-            .about-grid {
-                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             }
         }
 
@@ -502,25 +449,21 @@
                 padding: 0.9375rem 0;
             }
             
-            .about-hero {
+            .hero {
                 padding: clamp(3rem, 8vw, 5rem) 0 clamp(2.5rem, 6vw, 3.125rem);
             }
             
-            .about-hero h2 {
+            .hero h2 {
                 font-size: clamp(1.5rem, 4vw, 2.2rem);
+                white-space: normal;
             }
             
             .section-title h2 {
                 font-size: clamp(1.5rem, 4vw, 2.2rem);
             }
             
-            .about-grid {
-                grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-                gap: 1.25rem;
-            }
-            
-            .about-card {
-                padding: 1.5rem 1rem;
+            .about {
+                padding: clamp(2.5rem, 6vw, 3.75rem) 0;
             }
         }
 
@@ -537,11 +480,11 @@
                 font-size: 1.25rem;
             }
             
-            .about-hero h2 {
+            .hero h2 {
                 font-size: clamp(1.2rem, 3.5vw, 1.8rem);
             }
             
-            .about-hero p {
+            .hero p {
                 font-size: clamp(0.8rem, 2.5vw, 1rem);
             }
             
@@ -551,10 +494,6 @@
             
             .section-title p {
                 font-size: clamp(0.75rem, 2vw, 0.875rem);
-            }
-            
-            .about-content {
-                padding: clamp(2.5rem, 6vw, 3.75rem) 0;
             }
             
             .footer-grid {
@@ -574,29 +513,35 @@
     <header>
         <div class="container">
             <div class="header-top">
-                <div class="logo">
+                <a href="index.html" class="logo" aria-label="PDFMagic Home">
                     <i class="fas fa-file-pdf" aria-hidden="true"></i>
                     <h1>PDFMagic</h1>
-                </div>
+                </a>
                 <nav role="navigation" aria-label="Main navigation">
                     <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
                         <i class="fas fa-bars"></i>
                     </button>
                     <ul>
+                        <li><a href="index.html" aria-label="Home page"><i class="fas fa-home" aria-hidden="true"></i> Home</a></li>
+                        <li><a href="about.html" aria-label="About our company"><i class="fas fa-info-circle" aria-hidden="true"></i> About Us</a></li>
+                        <li><a href="contact.html" aria-label="Contact us"><i class="fas fa-envelope" aria-hidden="true"></i> Contact Us</a></li>
+                        <li><a href="privacy-policy.html" aria-label="Read our privacy policy"><i class="fas fa-shield-alt" aria-hidden="true"></i> Privacy Policy</a></li>
+                        <li><a href="terms-of-service.html" aria-label="Read our terms of service"><i class="fas fa-file-contract" aria-hidden="true"></i> Terms of Service</a></li>
                         <li class="dropdown">
-                            <a href="index.html" class="dropdown-toggle" aria-label="View all PDF tools" aria-haspopup="true" aria-expanded="false">
+                            <a href="#" class="dropdown-toggle" aria-label="View all PDF tools" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-tools" aria-hidden="true"></i> All Tools
                             </a>
                             <ul class="dropdown-menu">
+                                <li><a href="jpg-to-pdf.html" aria-label="Convert JPG to PDF"><i class="fas fa-exchange-alt" aria-hidden="true"></i> JPG to PDF</a></li>
+                                <li><a href="compress-pdf.html" aria-label="Compress PDF files"><i class="fas fa-compress-alt" aria-hidden="true"></i> Compress PDF</a></li>
                                 <li><a href="merge-pdf.html" aria-label="Merge multiple PDFs"><i class="fas fa-object-group" aria-hidden="true"></i> Merge PDF</a></li>
                                 <li><a href="split-pdf.html" aria-label="Split PDF into multiple files"><i class="fas fa-cut" aria-hidden="true"></i> Split PDF</a></li>
-                                <li><a href="compress-pdf.html" aria-label="Compress PDF files"><i class="fas fa-compress-alt" aria-hidden="true"></i> Compress PDF</a></li>
-                                <li><a href="jpg-to-pdf.html" aria-label="Convert JPG to PDF"><i class="fas fa-exchange-alt" aria-hidden="true"></i> JPG to PDF</a></li>
                                 <li><a href="edit-pdf.html" aria-label="Edit PDF files"><i class="fas fa-edit" aria-hidden="true"></i> Edit PDF</a></li>
+                                <li><a href="protect-pdf.html" aria-label="Protect PDF files"><i class="fas fa-lock" aria-hidden="true"></i> Protect PDF</a></li>
+                                <li><a href="unlock-pdf.html" aria-label="Unlock PDF files"><i class="fas fa-unlock" aria-hidden="true"></i> Unlock PDF</a></li>
+                                <li><a href="sign-pdf.html" aria-label="Sign PDF files"><i class="fas fa-file-signature" aria-hidden="true"></i> Sign PDF</a></li>
                             </ul>
                         </li>
-                        <li><a href="about.html" aria-label="About our company"><i class="fas fa-info-circle" aria-hidden="true"></i> About Us</a></li>
-                        <li><a href="contact.html" aria-label="Contact us"><i class="fas fa-envelope" aria-hidden="true"></i> Contact Us</a></li>
                     </ul>
                 </nav>
             </div>
@@ -605,67 +550,26 @@
 
     <!-- Main Content -->
     <main>
-        <!-- About Hero Section -->
-        <section class="about-hero" aria-labelledby="about-hero-heading">
+        <!-- Hero Section -->
+        <section class="hero" aria-labelledby="hero-heading">
             <div class="container">
-                <h2 id="about-hero-heading">About PDFMagic</h2>
-                <p>Empowering everyone with free, secure, and easy-to-use PDF tools to simplify document management.</p>
+                <h2 id="hero-heading">About PDFMagic</h2>
+                <p>Learn more about our mission to simplify PDF management for everyone.</p>
             </div>
         </section>
 
-        <!-- Our Story Section -->
-        <section class="container" aria-labelledby="story-heading">
-            <div class="section-title">
-                <h2 id="story-heading">Our Story</h2>
-                <p>Discover how PDFMagic came to be and why we're passionate about PDFs.</p>
-            </div>
-            <div class="about-content">
-                <div class="container">
-                    <p style="max-width: 800px; margin: 0 auto; font-size: clamp(1rem, 2.5vw, 1.125rem); color: #2c3e50;">
-                        Founded in 2023, PDFMagic was born from a simple idea: to make PDF management accessible to everyone. Our team of innovators saw the challenges people faced with complex and expensive PDF software, so we set out to create a platform that offers powerful, free, and secure tools for all your PDF needs. Whether you're a student, professional, or business owner, we’re here to help you merge, split, compress, convert, and edit PDFs with ease.
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Our Values Section -->
-        <section class="about-content" aria-labelledby="values-heading">
+        <!-- About Section -->
+        <section class="about" aria-labelledby="about-heading">
             <div class="container">
                 <div class="section-title">
-                    <h2 id="values-heading">Our Values</h2>
-                    <p>What drives us to deliver the best PDF solutions.</p>
+                    <h2 id="about-heading">Our Story</h2>
+                    <p>Discover who we are and why we are passionate about PDFs</p>
                 </div>
-                <div class="about-grid">
-                    <article class="about-card" aria-labelledby="simplicity-heading">
-                        <div class="about-icon">
-                            <i class="fas fa-magic" aria-hidden="true"></i>
-                        </div>
-                        <h3 id="simplicity-heading">Simplicity</h3>
-                        <p>Our tools are designed to be intuitive, making PDF tasks effortless for everyone.</p>
-                    </article>
-                    <article class="about-card" aria-labelledby="security-heading">
-                        <div class="about-icon">
-                            <i class="fas fa-shield-alt" aria-hidden="true"></i>
-                        </div>
-                        <h3 id="security-heading">Security</h3>
-                        <p>Your files are protected with advanced encryption and deleted after processing.</p>
-                    </article>
-                    <article class="about-card" aria-labelledby="innovation-heading">
-                        <div class="about-icon">
-                            <i class="fas fa-lightbulb" aria-hidden="true"></i>
-                        </div>
-                        <h3 id="innovation-heading">Innovation</h3>
-                        <p>We continuously improve our tools to meet your evolving needs.</p>
-                    </article>
+                <div class="about-content">
+                    <p>PDFMagic was founded with a simple goal: to make PDF management accessible, fast, and secure for everyone. Our team of dedicated developers and designers works tirelessly to create intuitive tools that help you merge, split, compress, convert, and edit PDFs without hassle.</p>
+                    <p>Since our inception, we have empowered millions of users worldwide to handle their documents efficiently. Whether you are a student, professional, or business owner, PDFMagic is here to streamline your workflow with free, high-quality tools.</p>
+                    <p>Our commitment to security ensures your files are protected with advanced encryption, and our user-friendly interface makes PDF tasks a breeze. Join us in revolutionizing how the world works with PDFs!</p>
                 </div>
-            </div>
-        </section>
-
-        <!-- Call to Action -->
-        <section class="cta-section" aria-labelledby="cta-heading">
-            <div class="container">
-                <h2 id="cta-heading" class="section-title">Ready to Transform Your PDFs?</h2>
-                <a href="index.html" aria-label="Explore our PDF tools">Explore Our Tools</a>
             </div>
         </section>
     </main>
@@ -688,11 +592,10 @@
                 <div class="footer-column">
                     <h3>Tools</h3>
                     <ul>
+                        <li><a href="jpg-to-pdf.html" aria-label="Convert JPG to PDF"><i class="fas fa-chevron-right" aria-hidden="true"></i> JPG to PDF</a></li>
+                        <li><a href="compress-pdf.html" aria-label="Compress PDF files"><i class="fas fa-chevron-right" aria-hidden="true"></i> Compress PDF</a></li>
                         <li><a href="merge-pdf.html" aria-label="Merge multiple PDFs"><i class="fas fa-chevron-right" aria-hidden="true"></i> Merge PDF</a></li>
                         <li><a href="split-pdf.html" aria-label="Split PDF into multiple files"><i class="fas fa-chevron-right" aria-hidden="true"></i> Split PDF</a></li>
-                        <li><a href="compress-pdf.html" aria-label="Compress PDF files"><i class="fas fa-chevron-right" aria-hidden="true"></i> Compress PDF</a></li>
-                        <li><a href="jpg-to-pdf.html" aria-label="Convert JPG to PDF"><i class="fas fa-chevron-right" aria-hidden="true"></i> JPG to PDF</a></li>
-                        <li><a href="edit-pdf.html" aria-label="Edit PDF files"><i class="fas fa-chevron-right" aria-hidden="true"></i> Edit PDF</a></li>
                     </ul>
                 </div>
                 
@@ -711,7 +614,6 @@
                     <ul>
                         <li><a href="about.html" aria-label="About our company"><i class="fas fa-chevron-right" aria-hidden="true"></i> About Us</a></li>
                         <li><a href="contact.html" aria-label="Contact us"><i class="fas fa-chevron-right" aria-hidden="true"></i> Contact Us</a></li>
-                        <li><a href="pricing.html" aria-label="View pricing plans"><i class="fas fa-chevron-right" aria-hidden="true"></i> Pricing</a></li>
                         <li><a href="privacy-policy.html" aria-label="Read our privacy policy"><i class="fas fa-chevron-right" aria-hidden="true"></i> Privacy Policy</a></li>
                         <li><a href="terms-of-service.html" aria-label="Read our terms of service"><i class="fas fa-chevron-right" aria-hidden="true"></i> Terms of Service</a></li>
                     </ul>
@@ -731,27 +633,7 @@
         "@type": "WebPage",
         "name": "About Us - PDFMagic",
         "url": "https://www.pdfmagic.com/about.html",
-        "description": "Learn about PDFMagic, your trusted platform for free online PDF tools. Discover our mission, team, and commitment to secure and easy PDF solutions.",
-        "isPartOf": {
-            "@type": "WebSite",
-            "name": "PDFMagic",
-            "url": "https://www.pdfmagic.com"
-        }
-    }
-    </script>
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "PDFMagic",
-        "url": "https://www.pdfmagic.com",
-        "logo": "https://www.pdfmagic.com/logo.png",
-        "sameAs": [
-            "https://www.facebook.com/pdfmagic",
-            "https://www.twitter.com/pdfmagic",
-            "https://www.instagram.com/pdfmagic",
-            "https://www.linkedin.com/company/pdfmagic"
-        ]
+        "description": "Learn about PDFMagic, your trusted platform for free online PDF tools. Discover our mission and team."
     }
     </script>
 
@@ -759,42 +641,42 @@
     <script>
         const hamburger = document.querySelector('.hamburger');
         const navMenu = document.querySelector('nav ul');
-        const hamburgerIcon = hamburger.querySelector('i');
+        const hamburgerIcon = hamburger ? hamburger.querySelector('i') : null;
         const dropdownToggle = document.querySelector('.dropdown-toggle');
         const dropdownMenu = document.querySelector('.dropdown-menu');
         const currentYearSpan = document.querySelector('#current-year');
 
-        // Set current year in footer
         if (currentYearSpan) {
             currentYearSpan.textContent = new Date().getFullYear();
         }
 
-        // Hamburger menu toggle
-        hamburger.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-            const isExpanded = navMenu.classList.contains('active');
-            hamburger.setAttribute('aria-expanded', isExpanded);
-            hamburgerIcon.classList.toggle('fa-bars');
-            hamburgerIcon.classList.toggle('fa-times');
-            if (!isExpanded) {
-                dropdownMenu.classList.remove('active');
-                dropdownToggle.setAttribute('aria-expanded', 'false');
-            }
-        });
+        if (hamburger && navMenu && hamburgerIcon) {
+            hamburger.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+                const isExpanded = navMenu.classList.contains('active');
+                hamburger.setAttribute('aria-expanded', isExpanded);
+                hamburgerIcon.classList.toggle('fa-bars');
+                hamburgerIcon.classList.toggle('fa-times');
+                if (!isExpanded) {
+                    dropdownMenu.classList.remove('active');
+                    dropdownToggle.setAttribute('aria-expanded', 'false');
+                }
+            });
+        }
 
-        // Dropdown menu toggle for mobile
-        dropdownToggle.addEventListener('click', (e) => {
-            if (window.innerWidth <= 768) {
-                e.preventDefault();
-                dropdownMenu.classList.toggle('active');
-                const isExpanded = dropdownMenu.classList.contains('active');
-                dropdownToggle.setAttribute('aria-expanded', isExpanded);
-            }
-        });
+        if (dropdownToggle && dropdownMenu) {
+            dropdownToggle.addEventListener('click', (e) => {
+                if (window.innerWidth <= 768) {
+                    e.preventDefault();
+                    dropdownMenu.classList.toggle('active');
+                    const isExpanded = dropdownMenu.classList.contains('active');
+                    dropdownToggle.setAttribute('aria-expanded', isExpanded);
+                }
+            });
+        }
 
-        // Close menu when clicking outside
         document.addEventListener('click', (event) => {
-            if (!hamburger.contains(event.target) && !navMenu.contains(event.target) && navMenu.classList.contains('active')) {
+            if (hamburger && navMenu && !hamburger.contains(event.target) && !navMenu.contains(event.target) && navMenu.classList.contains('active')) {
                 navMenu.classList.remove('active');
                 hamburger.setAttribute('aria-expanded', 'false');
                 hamburgerIcon.classList.add('fa-bars');

@@ -52,6 +52,7 @@
         .logo {
             display: flex;
             align-items: center;
+            cursor: pointer;
         }
 
         .logo i {
@@ -98,14 +99,11 @@
             display: flex;
             align-items: center;
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-        }
-
-        nav ul li a i {
-            margin-right: 0.5rem;
+            border: 1px solid transparent;
         }
 
         nav ul li a:hover {
-            background: linear-gradient(135deg, #2980b9, #6c3483);
+            background: #e74c3c; /* Red color on hover */
             transform: translateY(-2px);
             box-shadow: 0 4px 10px rgba(0,0,0,0.3);
         }
@@ -167,7 +165,7 @@
         }
 
         .dropdown-menu li a:hover {
-            background: linear-gradient(135deg, #2980b9, #6c3483);
+            background: #e74c3c; /* Red color on hover for dropdown */
             color: #ffffff;
             transform: translateY(-2px);
             box-shadow: 0 4px 10px rgba(0,0,0,0.3);
@@ -278,6 +276,7 @@
             margin-left: auto;
             margin-right: auto;
             text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            white-space: nowrap; /* Ensure heading stays in one line */
         }
 
         .hero p {
@@ -423,6 +422,52 @@
             font-size: clamp(0.9rem, 2.5vw, 1.05rem);
         }
 
+        /* How to Use Section */
+        .how-to-use {
+            padding: clamp(3rem, 8vw, 5rem) 0;
+            background-color: #ffffff;
+            border-radius: 1.875rem;
+            margin: 3.125rem 0;
+        }
+
+        .how-to-use-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(clamp(250px, 30vw, 300px), 1fr));
+            gap: clamp(1.5rem, 4vw, 2.1875rem);
+        }
+
+        .how-to-use-card {
+            background-color: #f8f9fa;
+            border-radius: 0.9375rem;
+            padding: clamp(1.875rem, 5vw, 2.5rem) 1.875rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .how-to-use-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .how-to-use-icon {
+            font-size: clamp(2rem, 5vw, 3.125rem);
+            margin-bottom: 1.5625rem;
+            background: linear-gradient(135deg, #3498db, #8e44ad);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .how-to-use-card h3 {
+            font-size: clamp(1.3rem, 3.5vw, 1.7rem);
+            margin-bottom: 0.9375rem;
+            color: #2c3e50;
+        }
+
+        .how-to-use-card p {
+            color: #7f8c8d;
+            font-size: clamp(0.9rem, 2.5vw, 1.05rem);
+        }
+
         /* Footer */
         footer {
             background: linear-gradient(135deg, #2c3e50 0%, #1a252f 100%);
@@ -531,7 +576,7 @@
                 grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
             }
             
-            .features-grid {
+            .features-grid, .how-to-use-grid {
                 grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             }
         }
@@ -547,6 +592,7 @@
             
             .hero h2 {
                 font-size: clamp(1.5rem, 4vw, 2.2rem);
+                white-space: normal; /* Allow wrapping on small screens */
             }
             
             .section-title h2 {
@@ -558,11 +604,7 @@
                 gap: 1.25rem;
             }
             
-            .tool-card {
-                padding: 1.5rem 1rem;
-            }
-            
-            .feature-card {
+            .tool-card, .feature-card, .how-to-use-card {
                 padding: 1.5rem 1rem;
             }
         }
@@ -596,7 +638,7 @@
                 font-size: clamp(0.75rem, 2vw, 0.875rem);
             }
             
-            .features {
+            .features, .how-to-use {
                 padding: clamp(2.5rem, 6vw, 3.75rem) 0;
             }
             
@@ -617,29 +659,35 @@
     <header>
         <div class="container">
             <div class="header-top">
-                <div class="logo">
+                <a href="index.html" class="logo" aria-label="PDFMagic Home">
                     <i class="fas fa-file-pdf" aria-hidden="true"></i>
                     <h1>PDFMagic</h1>
-                </div>
+                </a>
                 <nav role="navigation" aria-label="Main navigation">
                     <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
                         <i class="fas fa-bars"></i>
                     </button>
                     <ul>
+                        <li><a href="index.html" aria-label="Home page"><i class="fas fa-home" aria-hidden="true"></i> Home</a></li>
+                        <li><a href="about.html" aria-label="About our company"><i class="fas fa-info-circle" aria-hidden="true"></i> About Us</a></li>
+                        <li><a href="contact.html" aria-label="Contact us"><i class="fas fa-envelope" aria-hidden="true"></i> Contact Us</a></li>
+                        <li><a href="privacy-policy.html" aria-label="Read our privacy policy"><i class="fas fa-shield-alt" aria-hidden="true"></i> Privacy Policy</a></li>
+                        <li><a href="terms-of-service.html" aria-label="Read our terms of service"><i class="fas fa-file-contract" aria-hidden="true"></i> Terms of Service</a></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" aria-label="View all PDF tools" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-tools" aria-hidden="true"></i> All Tools
                             </a>
                             <ul class="dropdown-menu">
+                                <li><a href="jpg-to-pdf.html" aria-label="Convert JPG to PDF"><i class="fas fa-exchange-alt" aria-hidden="true"></i> JPG to PDF</a></li>
+                                <li><a href="compress-pdf.html" aria-label="Compress PDF files"><i class="fas fa-compress-alt" aria-hidden="true"></i> Compress PDF</a></li>
                                 <li><a href="merge-pdf.html" aria-label="Merge multiple PDFs"><i class="fas fa-object-group" aria-hidden="true"></i> Merge PDF</a></li>
                                 <li><a href="split-pdf.html" aria-label="Split PDF into multiple files"><i class="fas fa-cut" aria-hidden="true"></i> Split PDF</a></li>
-                                <li><a href="compress-pdf.html" aria-label="Compress PDF files"><i class="fas fa-compress-alt" aria-hidden="true"></i> Compress PDF</a></li>
-                                <li><a href="jpg-to-pdf.html" aria-label="Convert JPG to PDF"><i class="fas fa-exchange-alt" aria-hidden="true"></i> JPG to PDF</a></li>
                                 <li><a href="edit-pdf.html" aria-label="Edit PDF files"><i class="fas fa-edit" aria-hidden="true"></i> Edit PDF</a></li>
+                                <li><a href="protect-pdf.html" aria-label="Protect PDF files"><i class="fas fa-lock" aria-hidden="true"></i> Protect PDF</a></li>
+                                <li><a href="unlock-pdf.html" aria-label="Unlock PDF files"><i class="fas fa-unlock" aria-hidden="true"></i> Unlock PDF</a></li>
+                                <li><a href="sign-pdf.html" aria-label="Sign PDF files"><i class="fas fa-file-signature" aria-hidden="true"></i> Sign PDF</a></li>
                             </ul>
                         </li>
-                        <li><a href="about.html" aria-label="About our company"><i class="fas fa-info-circle" aria-hidden="true"></i> About Us</a></li>
-                        <li><a href="contact.html" aria-label="Contact us"><i class="fas fa-envelope" aria-hidden="true"></i> Contact Us</a></li>
                     </ul>
                 </nav>
             </div>
@@ -765,6 +813,42 @@
                 </div>
             </div>
         </section>
+
+        <!-- How to Use Section -->
+        <section class="how-to-use" aria-labelledby="how-to-use-heading">
+            <div class="container">
+                <div class="section-title">
+                    <h2 id="how-to-use-heading">How to Use PDFMagic</h2>
+                    <p>Follow these simple steps to start using our PDF tools</p>
+                </div>
+                
+                <div class="how-to-use-grid">
+                    <article class="how-to-use-card" aria-labelledby="select-tool-heading">
+                        <div class="how-to-use-icon">
+                            <i class="fas fa-mouse-pointer" aria-hidden="true"></i>
+                        </div>
+                        <h3 id="select-tool-heading">Select a Tool</h3>
+                        <p>Choose the PDF tool you need from our wide range of options, like merging, splitting, or converting.</p>
+                    </article>
+                    
+                    <article class="how-to-use-card" aria-labelledby="upload-file-heading">
+                        <div class="how-to-use-icon">
+                            <i class="fas fa-upload" aria-hidden="true"></i>
+                        </div>
+                        <h3 id="upload-file-heading">Upload Your File</h3>
+                        <p>Drag and drop or browse to upload your PDF or other files securely to our platform.</p>
+                    </article>
+                    
+                    <article class="how-to-use-card" aria-labelledby="download-heading">
+                        <div class="how-to-use-icon">
+                            <i class="fas fa-download" aria-hidden="true"></i>
+                        </div>
+                        <h3 id="download-heading">Process & Download</h3>
+                        <p>Apply the desired changes and download your processed file instantly.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
     </main>
 
     <!-- Footer -->
@@ -785,11 +869,10 @@
                 <div class="footer-column">
                     <h3>Tools</h3>
                     <ul>
+                        <li><a href="jpg-to-pdf.html" aria-label="Convert JPG to PDF"><i class="fas fa-chevron-right" aria-hidden="true"></i> JPG to PDF</a></li>
+                        <li><a href="compress-pdf.html" aria-label="Compress PDF files"><i class="fas fa-chevron-right" aria-hidden="true"></i> Compress PDF</a></li>
                         <li><a href="merge-pdf.html" aria-label="Merge multiple PDFs"><i class="fas fa-chevron-right" aria-hidden="true"></i> Merge PDF</a></li>
                         <li><a href="split-pdf.html" aria-label="Split PDF into multiple files"><i class="fas fa-chevron-right" aria-hidden="true"></i> Split PDF</a></li>
-                        <li><a href="compress-pdf.html" aria-label="Compress PDF files"><i class="fas fa-chevron-right" aria-hidden="true"></i> Compress PDF</a></li>
-                        <li><a href="jpg-to-pdf.html" aria-label="Convert JPG to PDF"><i class="fas fa-chevron-right" aria-hidden="true"></i> JPG to PDF</a></li>
-                        <li><a href="edit-pdf.html" aria-label="Edit PDF files"><i class="fas fa-chevron-right" aria-hidden="true"></i> Edit PDF</a></li>
                     </ul>
                 </div>
                 
@@ -808,7 +891,6 @@
                     <ul>
                         <li><a href="about.html" aria-label="About our company"><i class="fas fa-chevron-right" aria-hidden="true"></i> About Us</a></li>
                         <li><a href="contact.html" aria-label="Contact us"><i class="fas fa-chevron-right" aria-hidden="true"></i> Contact Us</a></li>
-                        <li><a href="pricing.html" aria-label="View pricing plans"><i class="fas fa-chevron-right" aria-hidden="true"></i> Pricing</a></li>
                         <li><a href="privacy-policy.html" aria-label="Read our privacy policy"><i class="fas fa-chevron-right" aria-hidden="true"></i> Privacy Policy</a></li>
                         <li><a href="terms-of-service.html" aria-label="Read our terms of service"><i class="fas fa-chevron-right" aria-hidden="true"></i> Terms of Service</a></li>
                     </ul>
@@ -856,7 +938,7 @@
     <script>
         const hamburger = document.querySelector('.hamburger');
         const navMenu = document.querySelector('nav ul');
-        const hamburgerIcon = hamburger.querySelector('i');
+        const hamburgerIcon = hamburger ? hamburger.querySelector('i') : null;
         const dropdownToggle = document.querySelector('.dropdown-toggle');
         const dropdownMenu = document.querySelector('.dropdown-menu');
         const currentYearSpan = document.querySelector('#current-year');
@@ -867,31 +949,35 @@
         }
 
         // Hamburger menu toggle
-        hamburger.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-            const isExpanded = navMenu.classList.contains('active');
-            hamburger.setAttribute('aria-expanded', isExpanded);
-            hamburgerIcon.classList.toggle('fa-bars');
-            hamburgerIcon.classList.toggle('fa-times');
-            if (!isExpanded) {
-                dropdownMenu.classList.remove('active');
-                dropdownToggle.setAttribute('aria-expanded', 'false');
-            }
-        });
+        if (hamburger && navMenu && hamburgerIcon) {
+            hamburger.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+                const isExpanded = navMenu.classList.contains('active');
+                hamburger.setAttribute('aria-expanded', isExpanded);
+                hamburgerIcon.classList.toggle('fa-bars');
+                hamburgerIcon.classList.toggle('fa-times');
+                if (!isExpanded) {
+                    dropdownMenu.classList.remove('active');
+                    dropdownToggle.setAttribute('aria-expanded', 'false');
+                }
+            });
+        }
 
         // Dropdown menu toggle for mobile
-        dropdownToggle.addEventListener('click', (e) => {
-            if (window.innerWidth <= 768) {
-                e.preventDefault();
-                dropdownMenu.classList.toggle('active');
-                const isExpanded = dropdownMenu.classList.contains('active');
-                dropdownToggle.setAttribute('aria-expanded', isExpanded);
-            }
-        });
+        if (dropdownToggle && dropdownMenu) {
+            dropdownToggle.addEventListener('click', (e) => {
+                if (window.innerWidth <= 768) {
+                    e.preventDefault();
+                    dropdownMenu.classList.toggle('active');
+                    const isExpanded = dropdownMenu.classList.contains('active');
+                    dropdownToggle.setAttribute('aria-expanded', isExpanded);
+                }
+            });
+        }
 
         // Close menu when clicking outside
         document.addEventListener('click', (event) => {
-            if (!hamburger.contains(event.target) && !navMenu.contains(event.target) && navMenu.classList.contains('active')) {
+            if (hamburger && navMenu && !hamburger.contains(event.target) && !navMenu.contains(event.target) && navMenu.classList.contains('active')) {
                 navMenu.classList.remove('active');
                 hamburger.setAttribute('aria-expanded', 'false');
                 hamburgerIcon.classList.add('fa-bars');

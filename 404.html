@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Page not found on PDFMagic. Return to our homepage to explore free online PDF tools.">
-    <meta name="keywords" content="pdfmagic 404, page not found, pdf tools">
+    <meta name="description" content="Page not found on PDFMagic. Return to our homepage or explore our free PDF tools.">
+    <meta name="keywords" content="404 error, pdfmagic, page not found">
     <meta name="robots" content="noindex">
     <meta name="author" content="PDFMagic Team">
     <title>404 - Page Not Found - PDFMagic</title>
@@ -52,6 +52,7 @@
         .logo {
             display: flex;
             align-items: center;
+            cursor: pointer;
         }
 
         .logo i {
@@ -98,14 +99,11 @@
             display: flex;
             align-items: center;
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-        }
-
-        nav ul li a i {
-            margin-right: 0.5rem;
+            border: 1px solid transparent;
         }
 
         nav ul li a:hover {
-            background: linear-gradient(135deg, #2980b9, #6c3483);
+            background: #e74c3c;
             transform: translateY(-2px);
             box-shadow: 0 4px 10px rgba(0,0,0,0.3);
         }
@@ -167,7 +165,7 @@
         }
 
         .dropdown-menu li a:hover {
-            background: linear-gradient(135deg, #2980b9, #6c3483);
+            background: #e74c3c;
             color: #ffffff;
             transform: translateY(-2px);
             box-shadow: 0 4px 10px rgba(0,0,0,0.3);
@@ -246,42 +244,84 @@
             }
         }
 
-        /* 404 Section */
-        .error-section {
-            padding: clamp(4rem, 10vw, 6.25rem) 0;
+        /* Error Section */
+        .error {
+            padding: clamp(3rem, 8vw, 5rem) 0;
+            background-color: #ffffff;
+            border-radius: 1.875rem;
+            margin: 3.125rem 0;
             text-align: center;
         }
 
-        .error-section h2 {
-            font-family: 'Poppins', sans-serif;
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            color: #2c3e50;
-            margin-bottom: 1.25rem;
+        .section-title {
+            text-align: center;
+            margin: 3.75rem 0 2.5rem;
         }
 
-        .error-section p {
-            font-size: clamp(1rem, 2.5vw, 1.125rem);
+        .section-title h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            color: #2c3e50;
+            margin-bottom: 0.9375rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70px;
+            height: 4px;
+            background: linear-gradient(to right, #3498db, #8e44ad);
+            border-radius: 2px;
+        }
+
+        .section-title p {
             color: #7f8c8d;
             max-width: 600px;
-            margin: 0 auto 1.875rem;
+            margin: 1.25rem auto 0;
+            font-size: clamp(0.875rem, 2.5vw, 1.1rem);
         }
 
-        .error-section a {
+        .error-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .error-content p {
+            color: #7f8c8d;
+            font-size: clamp(1rem, 3vw, 1.2rem);
+            margin-bottom: 1.5rem;
+        }
+
+        .error-content a {
             display: inline-block;
-            background: linear-gradient(135deg, #3498db, #8e44ad);
-            color: white;
-            padding: 0.9375rem 1.875rem;
-            border-radius: 0.5rem;
             text-decoration: none;
-            font-family: 'Poppins', sans-serif;
-            font-size: clamp(1rem, 2.5vw, 1.125rem);
+            color: #ffffff;
             font-weight: 500;
-            transition: transform 0.3s, box-shadow 0.3s;
+            font-size: clamp(0.875rem, 2.5vw, 1rem);
+            padding: 0.75rem 1.5rem;
+            background: linear-gradient(135deg, #3498db, #8e44ad);
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
 
-        .error-section a:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        .error-content a:hover {
+            background: #e74c3c;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        .error-icon {
+            font-size: clamp(4rem, 10vw, 6rem);
+            margin-bottom: 1.5625rem;
+            background: linear-gradient(135deg, #3498db, #8e44ad);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         /* Footer */
@@ -380,11 +420,11 @@
 
         /* Responsive Design */
         @media (max-width: 992px) {
-            .error-section h2 {
+            .hero h2 {
                 font-size: clamp(1.8rem, 4.5vw, 2.8rem);
             }
             
-            .error-section p {
+            .hero p {
                 font-size: clamp(0.875rem, 2.5vw, 1.1rem);
             }
         }
@@ -394,12 +434,21 @@
                 padding: 0.9375rem 0;
             }
             
-            .error-section {
-                padding: clamp(3rem, 8vw, 5rem) 0;
+            .hero {
+                padding: clamp(3rem, 8vw, 5rem) 0 clamp(2.5rem, 6vw, 3.125rem);
             }
             
-            .error-section h2 {
+            .hero h2 {
                 font-size: clamp(1.5rem, 4vw, 2.2rem);
+                white-space: normal;
+            }
+            
+            .section-title h2 {
+                font-size: clamp(1.5rem, 4vw, 2.2rem);
+            }
+            
+            .error {
+                padding: clamp(2.5rem, 6vw, 3.75rem) 0;
             }
         }
 
@@ -416,12 +465,24 @@
                 font-size: 1.25rem;
             }
             
-            .error-section h2 {
+            .hero h2 {
                 font-size: clamp(1.2rem, 3.5vw, 1.8rem);
             }
             
-            .error-section p {
+            .hero p {
                 font-size: clamp(0.8rem, 2.5vw, 1rem);
+            }
+            
+            .section-title h2 {
+                font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+            }
+            
+            .section-title p {
+                font-size: clamp(0.75rem, 2vw, 0.875rem);
+            }
+            
+            .error-icon {
+                font-size: clamp(3rem, 8vw, 4rem);
             }
             
             .footer-grid {
@@ -441,29 +502,35 @@
     <header>
         <div class="container">
             <div class="header-top">
-                <div class="logo">
+                <a href="index.html" class="logo" aria-label="PDFMagic Home">
                     <i class="fas fa-file-pdf" aria-hidden="true"></i>
                     <h1>PDFMagic</h1>
-                </div>
+                </a>
                 <nav role="navigation" aria-label="Main navigation">
                     <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
                         <i class="fas fa-bars"></i>
                     </button>
                     <ul>
+                        <li><a href="index.html" aria-label="Home page"><i class="fas fa-home" aria-hidden="true"></i> Home</a></li>
+                        <li><a href="about.html" aria-label="About our company"><i class="fas fa-info-circle" aria-hidden="true"></i> About Us</a></li>
+                        <li><a href="contact.html" aria-label="Contact us"><i class="fas fa-envelope" aria-hidden="true"></i> Contact Us</a></li>
+                        <li><a href="privacy-policy.html" aria-label="Read our privacy policy"><i class="fas fa-shield-alt" aria-hidden="true"></i> Privacy Policy</a></li>
+                        <li><a href="terms-of-service.html" aria-label="Read our terms of service"><i class="fas fa-file-contract" aria-hidden="true"></i> Terms of Service</a></li>
                         <li class="dropdown">
-                            <a href="index.html" class="dropdown-toggle" aria-label="View all PDF tools" aria-haspopup="true" aria-expanded="false">
+                            <a href="#" class="dropdown-toggle" aria-label="View all PDF tools" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-tools" aria-hidden="true"></i> All Tools
                             </a>
                             <ul class="dropdown-menu">
+                                <li><a href="jpg-to-pdf.html" aria-label="Convert JPG to PDF"><i class="fas fa-exchange-alt" aria-hidden="true"></i> JPG to PDF</a></li>
+                                <li><a href="compress-pdf.html" aria-label="Compress PDF files"><i class="fas fa-compress-alt" aria-hidden="true"></i> Compress PDF</a></li>
                                 <li><a href="merge-pdf.html" aria-label="Merge multiple PDFs"><i class="fas fa-object-group" aria-hidden="true"></i> Merge PDF</a></li>
                                 <li><a href="split-pdf.html" aria-label="Split PDF into multiple files"><i class="fas fa-cut" aria-hidden="true"></i> Split PDF</a></li>
-                                <li><a href="compress-pdf.html" aria-label="Compress PDF files"><i class="fas fa-compress-alt" aria-hidden="true"></i> Compress PDF</a></li>
-                                <li><a href="jpg-to-pdf.html" aria-label="Convert JPG to PDF"><i class="fas fa-exchange-alt" aria-hidden="true"></i> JPG to PDF</a></li>
                                 <li><a href="edit-pdf.html" aria-label="Edit PDF files"><i class="fas fa-edit" aria-hidden="true"></i> Edit PDF</a></li>
+                                <li><a href="protect-pdf.html" aria-label="Protect PDF files"><i class="fas fa-lock" aria-hidden="true"></i> Protect PDF</a></li>
+                                <li><a href="unlock-pdf.html" aria-label="Unlock PDF files"><i class="fas fa-unlock" aria-hidden="true"></i> Unlock PDF</a></li>
+                                <li><a href="sign-pdf.html" aria-label="Sign PDF files"><i class="fas fa-file-signature" aria-hidden="true"></i> Sign PDF</a></li>
                             </ul>
                         </li>
-                        <li><a href="about.html" aria-label="About our company"><i class="fas fa-info-circle" aria-hidden="true"></i> About Us</a></li>
-                        <li><a href="contact.html" aria-label="Contact us"><i class="fas fa-envelope" aria-hidden="true"></i> Contact Us</a></li>
                     </ul>
                 </nav>
             </div>
@@ -472,12 +539,29 @@
 
     <!-- Main Content -->
     <main>
-        <!-- 404 Section -->
-        <section class="error-section" aria-labelledby="error-heading">
+        <!-- Hero Section -->
+        <section class="hero" aria-labelledby="hero-heading">
             <div class="container">
-                <h2 id="error-heading">404 - Page Not Found</h2>
-                <p>Oops! It looks like the page you're looking for doesn't exist. Let's get you back to exploring our PDF tools.</p>
-                <a href="index.html" aria-label="Return to homepage">Back to Homepage</a>
+                <h2 id="hero-heading">404 - Page Not Found</h2>
+                <p>Oops! The page you're looking for doesn't exist.</p>
+            </div>
+        </section>
+
+        <!-- Error Section -->
+        <section class="error" aria-labelledby="error-heading">
+            <div class="container">
+                <div class="section-title">
+                    <h2 id="error-heading">Something Went Wrong</h2>
+                    <p>Let's get you back on track</p>
+                </div>
+                <div class="error-content">
+                    <div class="error-icon">
+                        <i class="fas fa-exclamation-circle" aria-hidden="true"></i>
+                    </div>
+                    <p>It looks like the page you’re trying to access isn’t available. You might have mistyped the URL or the page may have been moved.</p>
+                    <p>Try returning to our homepage or explore our PDF tools to continue.</p>
+                    <a href="index.html" aria-label="Return to homepage">Back to Home</a>
+                </div>
             </div>
         </section>
     </main>
@@ -500,11 +584,10 @@
                 <div class="footer-column">
                     <h3>Tools</h3>
                     <ul>
+                        <li><a href="jpg-to-pdf.html" aria-label="Convert JPG to PDF"><i class="fas fa-chevron-right" aria-hidden="true"></i> JPG to PDF</a></li>
+                        <li><a href="compress-pdf.html" aria-label="Compress PDF files"><i class="fas fa-chevron-right" aria-hidden="true"></i> Compress PDF</a></li>
                         <li><a href="merge-pdf.html" aria-label="Merge multiple PDFs"><i class="fas fa-chevron-right" aria-hidden="true"></i> Merge PDF</a></li>
                         <li><a href="split-pdf.html" aria-label="Split PDF into multiple files"><i class="fas fa-chevron-right" aria-hidden="true"></i> Split PDF</a></li>
-                        <li><a href="compress-pdf.html" aria-label="Compress PDF files"><i class="fas fa-chevron-right" aria-hidden="true"></i> Compress PDF</a></li>
-                        <li><a href="jpg-to-pdf.html" aria-label="Convert JPG to PDF"><i class="fas fa-chevron-right" aria-hidden="true"></i> JPG to PDF</a></li>
-                        <li><a href="edit-pdf.html" aria-label="Edit PDF files"><i class="fas fa-chevron-right" aria-hidden="true"></i> Edit PDF</a></li>
                     </ul>
                 </div>
                 
@@ -523,7 +606,6 @@
                     <ul>
                         <li><a href="about.html" aria-label="About our company"><i class="fas fa-chevron-right" aria-hidden="true"></i> About Us</a></li>
                         <li><a href="contact.html" aria-label="Contact us"><i class="fas fa-chevron-right" aria-hidden="true"></i> Contact Us</a></li>
-                        <li><a href="pricing.html" aria-label="View pricing plans"><i class="fas fa-chevron-right" aria-hidden="true"></i> Pricing</a></li>
                         <li><a href="privacy-policy.html" aria-label="Read our privacy policy"><i class="fas fa-chevron-right" aria-hidden="true"></i> Privacy Policy</a></li>
                         <li><a href="terms-of-service.html" aria-label="Read our terms of service"><i class="fas fa-chevron-right" aria-hidden="true"></i> Terms of Service</a></li>
                     </ul>
@@ -543,27 +625,7 @@
         "@type": "WebPage",
         "name": "404 - Page Not Found - PDFMagic",
         "url": "https://www.pdfmagic.com/404.html",
-        "description": "Page not found on PDFMagic. Return to our homepage to explore free online PDF tools.",
-        "isPartOf": {
-            "@type": "WebSite",
-            "name": "PDFMagic",
-            "url": "https://www.pdfmagic.com"
-        }
-    }
-    </script>
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "PDFMagic",
-        "url": "https://www.pdfmagic.com",
-        "logo": "https://www.pdfmagic.com/logo.png",
-        "sameAs": [
-            "https://www.facebook.com/pdfmagic",
-            "https://www.twitter.com/pdfmagic",
-            "https://www.instagram.com/pdfmagic",
-            "https://www.linkedin.com/company/pdfmagic"
-        ]
+        "description": "Page not found on PDFMagic. Return to our homepage or explore our free PDF tools."
     }
     </script>
 
@@ -571,42 +633,42 @@
     <script>
         const hamburger = document.querySelector('.hamburger');
         const navMenu = document.querySelector('nav ul');
-        const hamburgerIcon = hamburger.querySelector('i');
+        const hamburgerIcon = hamburger ? hamburger.querySelector('i') : null;
         const dropdownToggle = document.querySelector('.dropdown-toggle');
         const dropdownMenu = document.querySelector('.dropdown-menu');
         const currentYearSpan = document.querySelector('#current-year');
 
-        // Set current year in footer
         if (currentYearSpan) {
             currentYearSpan.textContent = new Date().getFullYear();
         }
 
-        // Hamburger menu toggle
-        hamburger.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-            const isExpanded = navMenu.classList.contains('active');
-            hamburger.setAttribute('aria-expanded', isExpanded);
-            hamburgerIcon.classList.toggle('fa-bars');
-            hamburgerIcon.classList.toggle('fa-times');
-            if (!isExpanded) {
-                dropdownMenu.classList.remove('active');
-                dropdownToggle.setAttribute('aria-expanded', 'false');
-            }
-        });
+        if (hamburger && navMenu && hamburgerIcon) {
+            hamburger.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+                const isExpanded = navMenu.classList.contains('active');
+                hamburger.setAttribute('aria-expanded', isExpanded);
+                hamburgerIcon.classList.toggle('fa-bars');
+                hamburgerIcon.classList.toggle('fa-times');
+                if (!isExpanded) {
+                    dropdownMenu.classList.remove('active');
+                    dropdownToggle.setAttribute('aria-expanded', 'false');
+                }
+            });
+        }
 
-        // Dropdown menu toggle for mobile
-        dropdownToggle.addEventListener('click', (e) => {
-            if (window.innerWidth <= 768) {
-                e.preventDefault();
-                dropdownMenu.classList.toggle('active');
-                const isExpanded = dropdownMenu.classList.contains('active');
-                dropdownToggle.setAttribute('aria-expanded', isExpanded);
-            }
-        });
+        if (dropdownToggle && dropdownMenu) {
+            dropdownToggle.addEventListener('click', (e) => {
+                if (window.innerWidth <= 768) {
+                    e.preventDefault();
+                    dropdownMenu.classList.toggle('active');
+                    const isExpanded = dropdownMenu.classList.contains('active');
+                    dropdownToggle.setAttribute('aria-expanded', isExpanded);
+                }
+            });
+        }
 
-        // Close menu when clicking outside
         document.addEventListener('click', (event) => {
-            if (!hamburger.contains(event.target) && !navMenu.contains(event.target) && navMenu.classList.contains('active')) {
+            if (hamburger && navMenu && !hamburger.contains(event.target) && !navMenu.contains(event.target) && navMenu.classList.contains('active')) {
                 navMenu.classList.remove('active');
                 hamburger.setAttribute('aria-expanded', 'false');
                 hamburgerIcon.classList.add('fa-bars');
