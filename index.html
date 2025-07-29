@@ -67,9 +67,15 @@
             -webkit-text-fill-color: transparent;
         }
 
+        nav {
+            display: flex;
+            align-items: center;
+        }
+
         nav ul {
             display: flex;
             list-style: none;
+            margin: 0;
         }
 
         nav ul li {
@@ -85,6 +91,12 @@
             transition: all 0.3s;
             padding: 8px 5px;
             position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        nav ul li a i {
+            margin-right: 8px;
         }
 
         nav ul li a:hover {
@@ -104,6 +116,54 @@
 
         nav ul li a:hover::after {
             width: 100%;
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            font-size: 24px;
+            color: #2c3e50;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        /* Mobile Menu Styles */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            nav ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background-color: #ffffff;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+                padding: 20px 0;
+                z-index: 999;
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            nav ul li {
+                margin: 10px 0;
+                text-align: center;
+            }
+
+            nav ul li a {
+                font-size: 18px;
+                padding: 10px;
+                justify-content: center;
+            }
+
+            nav ul li a::after {
+                display: none;
+            }
         }
 
         /* Hero Section */
@@ -385,16 +445,6 @@
                 padding: 15px 0;
             }
             
-            nav ul {
-                flex-wrap: wrap;
-                justify-content: center;
-                margin-top: 15px;
-            }
-            
-            nav ul li {
-                margin: 5px 10px;
-            }
-            
             .hero {
                 padding: 80px 0 50px;
             }
@@ -441,12 +491,15 @@
                     <h1>PDFMagic</h1>
                 </div>
                 <nav>
+                    <div class="hamburger">
+                        <i class="fas fa-bars"></i>
+                    </div>
                     <ul>
                         <li><a href="#"><i class="fas fa-tools"></i> All Tools</a></li>
                         <li><a href="#"><i class="fas fa-object-group"></i> Merge PDF</a></li>
                         <li><a href="#"><i class="fas fa-cut"></i> Split PDF</a></li>
                         <li><a href="#"><i class="fas fa-compress-alt"></i> Compress PDF</a></li>
-                        <li><a href="#"><i class="fas fa-exchange-alt"></i> Convert PDF</a></li>
+                        <li><a href="#"><i class="fas fa-exchange-alt"></i> JPG to PDF</a></li>
                         <li><a href="#"><i class="fas fa-edit"></i> Edit PDF</a></li>
                     </ul>
                 </nav>
@@ -472,18 +525,10 @@
         <div class="tools-grid">
             <div class="tool-card">
                 <div class="tool-icon">
-                    <i class="fas fa-object-group"></i>
+                    <i class="fas fa-exchange-alt"></i>
                 </div>
-                <h3>Merge PDF</h3>
-                <p>Combine multiple PDFs into one document</p>
-            </div>
-            
-            <div class="tool-card">
-                <div class="tool-icon">
-                    <i class="fas fa-cut"></i>
-                </div>
-                <h3>Split PDF</h3>
-                <p>Separate one PDF into multiple files</p>
+                <h3>JPG to PDF</h3>
+                <p>Convert to and from PDF with various formats</p>
             </div>
             
             <div class="tool-card">
@@ -496,10 +541,18 @@
             
             <div class="tool-card">
                 <div class="tool-icon">
-                    <i class="fas fa-exchange-alt"></i>
+                    <i class="fas fa-object-group"></i>
                 </div>
-                <h3>Convert PDF</h3>
-                <p>Convert to and from PDF with various formats</p>
+                <h3>Merge PDF</h3>
+                <p>Combine multiple PDFs into one document</p>
+            </div>
+            
+            <div class="tool-card">
+                <div class="tool-icon">
+                    <i class="fas fa-cut"></i>
+                </div>
+                <h3>Split PDF</h3>
+                <p>Separate one PDF into multiple files</p>
             </div>
             
             <div class="tool-card">
@@ -593,7 +646,7 @@
                         <li><a href="#"><i class="fas fa-chevron-right"></i> Merge PDF</a></li>
                         <li><a href="#"><i class="fas fa-chevron-right"></i> Split PDF</a></li>
                         <li><a href="#"><i class="fas fa-chevron-right"></i> Compress PDF</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> Convert PDF</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> JPG to PDF</a></li>
                         <li><a href="#"><i class="fas fa-chevron-right"></i> Edit PDF</a></li>
                     </ul>
                 </div>
@@ -621,9 +674,19 @@
             </div>
             
             <div class="copyright">
-                <p>&copy; 2023 PDFMagic. All rights reserved. This is a demo website for educational purposes.</p>
+                <p>&copy; 2023 PDFMagic. All rights reserved.</p>
             </div>
         </div>
     </footer>
+
+    <!-- JavaScript for Hamburger Menu -->
+    <script>
+        document.querySelector('.hamburger').addEventListener('click', function() {
+            document.querySelector('nav ul').classList.toggle('active');
+            const icon = this.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+    </script>
 </body>
 </html>
