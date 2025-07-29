@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Convert JPG to PDF online for free with PDFMagic. Choose page size, quality, and combine multiple images into a single PDF.">
+    <meta name="keywords" content="jpg to pdf, convert jpg to pdf, free pdf tools, pdfmagic">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="PDFMagic Team">
+    <title>JPG to PDF - PDFMagic</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e7eb 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: #ffffff;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 0.625rem 0;
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            font-size: 2rem;
+            color: #e74c3c;
+            margin-right: 0.75rem;
+        }
+
+        .logo h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(1.5rem, 4vw, 1.625rem);
+            font-weight: 700;
+            color: #2c3e50;
+            background: linear-gradient(45deg, #3498db, #8e44ad);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+        }
+
+        nav ul li {
+            margin-left: 1.25rem;
+            position: relative;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #ffffff;
+            font-weight: 500;
+            font-size: clamp(0.875rem, 2.5vw, 1rem);
+            padding: 0.5rem 1rem;
+            background: linear-gradient(135deg, #3498db, #8e44ad);
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        nav ul li a i {
+            margin-right: 0.5rem;
+        }
+
+        nav ul li a:hover {
+            background: linear-gradient(135deg, #2980b9, #6c3483);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        nav ul li a:focus {
+            outline: 2px solid #e74c3c;
+            outline-offset: 2px;
+        }
+
+        nav ul li a::after {
+            display: none;
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-toggle::after {
+            content: '\f078';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            margin-left: 0.5rem;
+            font-size: 0.8rem;
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #ffffff;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            min-width: 200px;
+            z-index: 1000;
+            border-radius: 0.5rem;
+            padding: 0.5rem 0;
+        }
+
+        .dropdown:hover .dropdown-menu,
+        .dropdown-menu.active {
+            display: block;
+        }
+
+        .dropdown-menu li {
+            margin: 0;
+            padding: 0.5rem 1rem;
+        }
+
+        .dropdown-menu li a {
+            justify-content: flex-start;
+            padding: 0.5rem 1rem;
+            font-size: 0.95rem;
+            background: linear-gradient(135deg, #3498db, #8e44ad);
+            color: #ffffff;
+            border-radius: 0.5rem;
+            margin: 0.25rem 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .dropdown-menu li a:hover {
+            background: linear-gradient(135deg, #2980b9, #6c3483);
+            color: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        .dropdown-menu li a:focus {
+            outline: 2px solid #e74c3c;
+            outline-offset: 2px;
+        }
+
+        .hamburger {
+            display: none;
+            font-size: 1.5rem;
+            color: #2c3e50;
+            cursor: pointer;
+            padding: 0.625rem;
+            border: none;
+            background: none;
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            nav ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: #ffffff;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+                padding: 1.25rem 0;
+                z-index: 999;
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            nav ul li {
+                margin: 0.625rem 0;
+                text-align: center;
+            }
+
+            nav ul li a {
+                font-size: 1.125rem;
+                padding: 0.75rem 1.5rem;
+                justify-content: center;
+                margin: 0.25rem 1rem;
+            }
+
+            .dropdown-menu {
+                position: static;
+                box-shadow: none;
+                background-color: #f8f9fa;
+                padding: 0.5rem 1.5rem;
+            }
+
+            .dropdown-menu li a {
+                justify-content: center;
+                margin: 0.25rem 0;
+            }
+
+            .dropdown-toggle::after {
+                content: '\f078';
+                margin-left: 0.5rem;
+            }
+
+            .dropdown-menu.active {
+                display: block;
+            }
+        }
+
+        /* JPG to PDF Section */
+        .tool-hero {
+            background: linear-gradient(135deg, #3498db 0%, #8e44ad 100%);
+            color: white;
+            padding: clamp(4rem, 10vw, 6.25rem) 0 clamp(3rem, 8vw, 4.375rem);
+            text-align: center;
+            border-radius: 0 0 1.875rem 1.875rem;
+            margin-bottom: 3.125rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tool-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 Q50,20 100,0 L100,100 Q50,80 0,100 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+            background-size: cover;
+        }
+
+        .tool-hero h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(1.8rem, 5vw, 3.2rem);
+            font-weight: 700;
+            margin-bottom: 1.25rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .tool-hero p {
+            font-size: clamp(1rem, 3vw, 1.3rem);
+            max-width: 700px;
+            margin: 0 auto 1.875rem;
+            opacity: 0.95;
+        }
+
+        .tool-section {
+            background-color: #f1f2f6;
+            padding: clamp(3rem, 8vw, 5rem) 0;
+            border-radius: 1.875rem;
+            margin: 3.125rem 0;
+        }
+
+        .tool-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: clamp(1.5rem, 4vw, 2.1875rem);
+        }
+
+        .drag-drop-area {
+            background-color: white;
+            border: 2px dashed #3498db;
+            border-radius: 0.9375rem;
+            padding: clamp(1.875rem, 5vw, 2.5rem);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .drag-drop-area.drag-active {
+            border-color: #8e44ad;
+            background-color: #f8f9fa;
+        }
+
+        .drag-drop-area h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(1.3rem, 3.5vw, 1.7rem);
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        .drag-drop-area p {
+            font-size: clamp(0.9rem, 2.5vw, 1.05rem);
+            color: #7f8c8d;
+            margin-bottom: 1.5rem;
+        }
+
+        .drag-drop-area input[type="file"] {
+            display: none;
+        }
+
+        .drag-drop-area label {
+            display: inline-block;
+            background: linear-gradient(135deg, #3498db, #8e44ad);
+            color: white;
+            padding: 0.9375rem 1.875rem;
+            border-radius: 0.5rem;
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(1rem, 2.5vw, 1.125rem);
+            font-weight: 500;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .drag-drop-area label:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .settings {
+            background-color: white;
+            border-radius: 0.9375rem;
+            padding: clamp(1.875rem, 5vw, 2.5rem);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+        }
+
+        .settings h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(1.3rem, 3.5vw, 1.7rem);
+            color: #2c3e50;
+            margin-bottom: 1.25rem;
+        }
+
+        .settings label {
+            display: block;
+            font-size: clamp(0.9rem, 2.5vw, 1rem);
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .settings select,
+        .settings input[type="range"] {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ecf0f1;
+            border-radius: 0.5rem;
+            font-size: clamp(0.875rem, 2.5vw, 1rem);
+            margin-bottom: 1.25rem;
+        }
+
+        .settings select:focus,
+        .settings input[type="range"]:focus {
+            border-color: #3498db;
+            outline: none;
+        }
+
+        .settings .checkbox-label {
+            display: flex;
+            align-items: center;
+            font-size: clamp(0.9rem, 2.5vw, 1rem);
+            color: #2c3e50;
+            margin-bottom: 1.25rem;
+        }
+
+        .settings input[type="checkbox"] {
+            margin-right: 0.75rem;
+        }
+
+        .preview-section {
+            background-color: white;
+            border-radius: 0.9375rem;
+            padding: clamp(1.875rem, 5vw, 2.5rem);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            margin-top: 2rem;
+        }
+
+        .preview-section h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(1.3rem, 3.5vw, 1.7rem);
+            color: #2c3e50;
+            margin-bottom: 1.25rem;
+        }
+
+        .preview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 1rem;
+        }
+
+        .preview-image {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 0.5rem;
+            border: 1px solid #ecf0f1;
+        }
+
+        .action-buttons {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .action-buttons button {
+            background: linear-gradient(135deg, #3498db, #8e44ad);
+            color: white;
+            padding: 0.9375rem 1.875rem;
+            border: none;
+            border-radius: 0.5rem;
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(1rem, 2.5vw, 1.125rem);
+            font-weight: 500;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .action-buttons button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .action-buttons button:focus {
+            outline: 2px solid #e74c3c;
+            outline-offset: 2px;
+        }
+
+        .download-section {
+            display: none;
+            text-align: center;
+            padding: 3rem 0;
+        }
+
+        .download-section button {
+            background: linear-gradient(135deg, #3498db, #8e44ad);
+            color: white;
+            padding: 1.25rem 2.5rem;
+            border: none;
+            border-radius: 0.5rem;
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .download-section button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .download-section button:focus {
+            outline: 2px solid #e74c3c;
+            outline-offset: 2px;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #2c3e50 0%, #1a252f 100%);
+            color: #ecf0f1;
+            padding: clamp(3rem, 8vw, 5rem) 0 1.875rem;
+            border-radius: 1.875rem 1.875rem 0 0;
+            margin-top: clamp(3rem, 8vw, 4.375rem);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(clamp(180px, 25vw, 200px), 1fr));
+            gap: clamp(1.5rem, 4vw, 2.5rem);
+            margin-bottom: 3.125rem;
+        }
+
+        .footer-column h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            margin-bottom: 1.5625rem;
+            color: white;
+            position: relative;
+            padding-bottom: 0.625rem;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: #3498db;
+            border-radius: 2px;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-column ul li a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: clamp(0.875rem, 2.5vw, 1.05rem);
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-column ul li a i {
+            margin-right: 0.5rem;
+        }
+
+        .footer-column ul li a:hover {
+            color: white;
+            padding-left: 0.3125rem;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 0.9375rem;
+            margin-top: 1.5625rem;
+        }
+
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background-color: #34495e;
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s;
+            font-size: 1.2rem;
+        }
+
+        .social-icons a:hover {
+            background: linear-gradient(135deg, #3498db, #8e44ad);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 1.875rem;
+            border-top: 1px solid #34495e;
+            color: #bdc3c7;
+            font-size: clamp(0.875rem, 2.5vw, 1rem);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .tool-hero h2 {
+                font-size: clamp(1.8rem, 4.5vw, 2.8rem);
+            }
+
+            .tool-hero p {
+                font-size: clamp(0.875rem, 2.5vw, 1.1rem);
+            }
+
+            .tool-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 0.9375rem 0;
+            }
+
+            .tool-hero {
+                padding: clamp(3rem, 8vw, 5rem) 0 clamp(2.5rem, 6vw, 3.125rem);
+            }
+
+            .tool-hero h2 {
+                font-size: clamp(1.5rem, 4vw, 2.2rem);
+            }
+
+            .tool-section {
+                padding: clamp(2.5rem, 6vw, 3.75rem) 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo h1 {
+                font-size: clamp(1.2rem, 3.5vw, 1.5rem);
+            }
+
+            .logo i {
+                font-size: 1.5rem;
+            }
+
+            .hamburger {
+                font-size: 1.25rem;
+            }
+
+            .tool-hero h2 {
+                font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+            }
+
+            .tool-hero p {
+                font-size: clamp(0.8rem, 2.5vw, 1rem);
+            }
+
+            .drag-drop-area,
+            .settings,
+            .preview-section {
+                padding: 1.5rem;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .social-icons a {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-top">
+                <div class="logo">
+                    <i class="fas fa-file-pdf" aria-hidden="true"></i>
+                    <h1>PDFMagic</h1>
+                </div>
+                <nav role="navigation" aria-label="Main navigation">
+                    <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <ul>
+                        <li class="dropdown">
+                            <a href="index.html" class="dropdown-toggle" aria-label="View all PDF tools" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-tools" aria-hidden="true"></i> All Tools
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="merge-pdf.html" aria-label="Merge multiple PDFs"><i class="fas fa-object-group" aria-hidden="true"></i> Merge PDF</a></li>
+                                <li><a href="split-pdf.html" aria-label="Split PDF into multiple files"><i class="fas fa-cut" aria-hidden="true"></i> Split PDF</a></li>
+                                <li><a href="compress-pdf.html" aria-label="Compress PDF files"><i class="fas fa-compress-alt" aria-hidden="true"></i> Compress PDF</a></li>
+                                <li><a href="jpg-to-pdf.html" aria-label="Convert JPG to PDF"><i class="fas fa-exchange-alt" aria-hidden="true"></i> JPG to PDF</a></li>
+                                <li><a href="edit-pdf.html" aria-label="Edit PDF files"><i class="fas fa-edit" aria-hidden="true"></i> Edit PDF</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="about.html" aria-label="About our company"><i class="fas fa-info-circle" aria-hidden="true"></i> About Us</a></li>
+                        <li><a href="contact.html" aria-label="Contact us"><i class="fas fa-envelope" aria-hidden="true"></i> Contact Us</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Tool Hero Section -->
+        <section class="tool-hero" aria-labelledby="tool-hero-heading">
+            <div class="container">
+                <h2 id="tool-hero-heading">Convert JPG to PDF</h2>
+                <p>Easily convert your JPG images to PDF with customizable page sizes and quality settings. Combine multiple images into a single PDF for free.</p>
+            </div>
+        </section>
+
+        <!-- Tool Section -->
+        <section class="tool-section" aria-labelledby="tool-heading">
+            <div class="container">
+                <div class="tool-grid" id="tool-grid">
+                    <!-- Drag and Drop Area -->
+                    <div class="drag-drop-area" id="drag-drop-area" role="region" aria-label="Drag and drop JPG files">
+                        <h3>Drag & Drop Your JPG Files</h3>
+                        <p>Or click below to select files from your device.</p>
+                        <label for="file-input">Select Files</label>
+                        <input type="file" id="file-input" accept="image/jpeg" multiple aria-label="Select JPG files to convert">
+                    </div>
+
+                    <!-- Settings -->
+                    <div class="settings">
+                        <h3>Conversion Settings</h3>
+                        <label for="page-size">Page Size</label>
+                        <select id="page-size" aria-label="Select page size">
+                            <option value="auto">Auto</option>
+                            <option value="a4">A4</option>
+                            <option value="4x6">4x6</option>
+                            <option value="a3">A3</option>
+                        </select>
+                        <label for="quality">Quality</label>
+                        <input type="range" id="quality" min="1" max="3" value="2" aria-label="Adjust PDF quality">
+                        <div class="checkbox-label">
+                            <input type="checkbox" id="single-pdf" aria-label="Combine into single PDF">
+                            <span>Combine into single PDF</span>
+                        </div>
+                    </div>
+
+                    <!-- Preview Section -->
+                    <div class="preview-section" id="preview-section">
+                        <h3>Preview</h3>
+                        <div class="preview-grid" id="preview-grid"></div>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="action-buttons">
+                    <button id="convert-btn" aria-label="Convert JPG to PDF">Convert to PDF</button>
+                </div>
+
+                <!-- Download Section -->
+                <div class="download-section" id="download-section">
+                    <button id="download-btn" aria-label="Download converted PDF">Download PDF</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer aria-labelledby="footer-heading">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3 id="footer-heading">PDFMagic</h3>
+                    <p>Free online PDF tools to solve all your document problems. Fast, secure, and easy to use.</p>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/pdfmagic" aria-label="Follow us on Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+                        <a href="https://www.twitter.com/pdfmagic" aria-label="Follow us on Twitter"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+                        <a href="https://www.instagram.com/pdfmagic" aria-label="Follow us on Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                        <a href="https://www.linkedin.com/company/pdfmagic" aria-label="Follow us on LinkedIn"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Tools</h3>
+                    <ul>
+                        <li><a href="merge-pdf.html" aria-label="Merge multiple PDFs"><i class="fas fa-chevron-right" aria-hidden="true"></i> Merge PDF</a></li>
+                        <li><a href="split-pdf.html" aria-label="Split PDF into multiple files"><i class="fas fa-chevron-right" aria-hidden="true"></i> Split PDF</a></li>
+                        <li><a href="compress-pdf.html" aria-label="Compress PDF files"><i class="fas fa-chevron-right" aria-hidden="true"></i> Compress PDF</a></li>
+                        <li><a href="jpg-to-pdf.html" aria-label="Convert JPG to PDF"><i class="fas fa-chevron-right" aria-hidden="true"></i> JPG to PDF</a></li>
+                        <li><a href="edit-pdf.html" aria-label="Edit PDF files"><i class="fas fa-chevron-right" aria-hidden="true"></i> Edit PDF</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="blog.html" aria-label="Read our blog"><i class="fas fa-chevron-right" aria-hidden="true"></i> Blog</a></li>
+                        <li><a href="tutorials.html" aria-label="View tutorials"><i class="fas fa-chevron-right" aria-hidden="true"></i> Tutorials</a></li>
+                        <li><a href="help-center.html" aria-label="Visit help center"><i class="fas fa-chevron-right" aria-hidden="true"></i> Help Center</a></li>
+                        <li><a href="faq.html" aria-label="Read FAQs"><i class="fas fa-chevron-right" aria-hidden="true"></i> FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="about.html" aria-label="About our company"><i class="fas fa-chevron-right" aria-hidden="true"></i> About Us</a></li>
+                        <li><a href="contact.html" aria-label="Contact us"><i class="fas fa-chevron-right" aria-hidden="true"></i> Contact Us</a></li>
+                        <li><a href="pricing.html" aria-label="View pricing plans"><i class="fas fa-chevron-right" aria-hidden="true"></i> Pricing</a></li>
+                        <li><a href="privacy-policy.html" aria-label="Read our privacy policy"><i class="fas fa-chevron-right" aria-hidden="true"></i> Privacy Policy</a></li>
+                        <li><a href="terms-of-service.html" aria-label="Read our terms of service"><i class="fas fa-chevron-right" aria-hidden="true"></i> Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; <span id="current-year"></span> PDFMagic. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "JPG to PDF - PDFMagic",
+        "url": "https://www.pdfmagic.com/jpg-to-pdf.html",
+        "description": "Convert JPG to PDF online for free with PDFMagic. Choose page size, quality, and combine multiple images into a single PDF.",
+        "isPartOf": {
+            "@type": "WebSite",
+            "name": "PDFMagic",
+            "url": "https://www.pdfmagic.com"
+        }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "PDFMagic",
+        "url": "https://www.pdfmagic.com",
+        "logo": "https://www.pdfmagic.com/logo.png",
+        "sameAs": [
+            "https://www.facebook.com/pdfmagic",
+            "https://www.twitter.com/pdfmagic",
+            "https://www.instagram.com/pdfmagic",
+            "https://www.linkedin.com/company/pdfmagic"
+        ]
+    }
+    </script>
+
+    <!-- JavaScript for Hamburger, Dropdown Menu, Dynamic Year, and Tool Functionality -->
+    <script>
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('nav ul');
+        const hamburgerIcon = hamburger.querySelector('i');
+        const dropdownToggle = document.querySelector('.dropdown-toggle');
+        const dropdownMenu = document.querySelector('.dropdown-menu');
+        const currentYearSpan = document.querySelector('#current-year');
+        const dragDropArea = document.querySelector('#drag-drop-area');
+        const fileInput = document.querySelector('#file-input');
+        const previewGrid = document.querySelector('#preview-grid');
+        const convertBtn = document.querySelector('#convert-btn');
+        const toolGrid = document.querySelector('#tool-grid');
+        const downloadSection = document.querySelector('#download-section');
+
+        // Set current year in footer
+        if (currentYearSpan) {
+            currentYearSpan.textContent = new Date().getFullYear();
+        }
+
+        // Hamburger menu toggle
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            const isExpanded = navMenu.classList.contains('active');
+            hamburger.setAttribute('aria-expanded', isExpanded);
+            hamburgerIcon.classList.toggle('fa-bars');
+            hamburgerIcon.classList.toggle('fa-times');
+            if (!isExpanded) {
+                dropdownMenu.classList.remove('active');
+                dropdownToggle.setAttribute('aria-expanded', 'false');
+            }
+        });
+
+        // Dropdown menu toggle for mobile
+        dropdownToggle.addEventListener('click', (e) => {
+            if (window.innerWidth <= 768) {
+                e.preventDefault();
+                dropdownMenu.classList.toggle('active');
+                const isExpanded = dropdownMenu.classList.contains('active');
+                dropdownToggle.setAttribute('aria-expanded', isExpanded);
+            }
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (event) => {
+            if (!hamburger.contains(event.target) && !navMenu.contains(event.target) && navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+                hamburger.setAttribute('aria-expanded', 'false');
+                hamburgerIcon.classList.add('fa-bars');
+                hamburgerIcon.classList.remove('fa-times');
+                dropdownMenu.classList.remove('active');
+                dropdownToggle.setAttribute('aria-expanded', 'false');
+            }
+        });
+
+        // Drag and Drop Functionality
+        dragDropArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dragDropArea.classList.add('drag-active');
+        });
+
+        dragDropArea.addEventListener('dragleave', () => {
+            dragDropArea.classList.remove('drag-active');
+        });
+
+        dragDropArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dragDropArea.classList.remove('drag-active');
+            const files = e.dataTransfer.files;
+            handleFiles(files);
+        });
+
+        fileInput.addEventListener('change', () => {
+            handleFiles(fileInput.files);
+        });
+
+        function handleFiles(files) {
+            previewGrid.innerHTML = ''; // Clear previous previews
+            Array.from(files).forEach(file => {
+                if (file.type === 'image/jpeg') {
+                    const reader = new FileReader();
+                    reader.onload = (e) => {
+                        const img = document.createElement('img');
+                        img.src = e.target.result;
+                        img.classList.add('preview-image');
+                        img.alt = `Preview of ${file.name}`;
+                        previewGrid.appendChild(img);
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+        }
+
+        // Convert Button Functionality
+        convertBtn.addEventListener('click', () => {
+            toolGrid.style.display = 'none';
+            convertBtn.style.display = 'none';
+            downloadSection.style.display = 'block';
+        });
+    </script>
+</body>
+</html>

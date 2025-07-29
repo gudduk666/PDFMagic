@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact PDFMagic for support or inquiries about our free online PDF tools. Reach us via email, phone, or our contact form.">
+    <meta name="keywords" content="contact pdfmagic, pdf tools support, pdfmagic contact, free pdf tools">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="PDFMagic Team">
+    <title>Contact Us - PDFMagic</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e7eb 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: #ffffff;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 0.625rem 0;
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            font-size: 2rem;
+            color: #e74c3c;
+            margin-right: 0.75rem;
+        }
+
+        .logo h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(1.5rem, 4vw, 1.625rem);
+            font-weight: 700;
+            color: #2c3e50;
+            background: linear-gradient(45deg, #3498db, #8e44ad);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+        }
+
+        nav ul li {
+            margin-left: 1.25rem;
+            position: relative;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #ffffff;
+            font-weight: 500;
+            font-size: clamp(0.875rem, 2.5vw, 1rem);
+            padding: 0.5rem 1rem;
+            background: linear-gradient(135deg, #3498db, #8e44ad);
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        nav ul li a i {
+            margin-right: 0.5rem;
+        }
+
+        nav ul li a:hover {
+            background: linear-gradient(135deg, #2980b9, #6c3483);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        nav ul li a:focus {
+            outline: 2px solid #e74c3c;
+            outline-offset: 2px;
+        }
+
+        nav ul li a::after {
+            display: none;
+        }
+
+        /* Dropdown Menu */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-toggle::after {
+            content: '\f078';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            margin-left: 0.5rem;
+            font-size: 0.8rem;
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #ffffff;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            min-width: 200px;
+            z-index: 1000;
+            border-radius: 0.5rem;
+            padding: 0.5rem 0;
+        }
+
+        .dropdown:hover .dropdown-menu,
+        .dropdown-menu.active {
+            display: block;
+        }
+
+        .dropdown-menu li {
+            margin: 0;
+            padding: 0.5rem 1rem;
+        }
+
+        .dropdown-menu li a {
+            justify-content: flex-start;
+            padding: 0.5rem 1rem;
+            font-size: 0.95rem;
+            background: linear-gradient(135deg, #3498db, #8e44ad);
+            color: #ffffff;
+            border-radius: 0.5rem;
+            margin: 0.25rem 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .dropdown-menu li a:hover {
+            background: linear-gradient(135deg, #2980b9, #6c3483);
+            color: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        .dropdown-menu li a:focus {
+            outline: 2px solid #e74c3c;
+            outline-offset: 2px;
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            font-size: 1.5rem;
+            color: #2c3e50;
+            cursor: pointer;
+            padding: 0.625rem;
+            border: none;
+            background: none;
+        }
+
+        /* Mobile Menu Styles */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            nav ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: #ffffff;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+                padding: 1.25rem 0;
+                z-index: 999;
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            nav ul li {
+                margin: 0.625rem 0;
+                text-align: center;
+            }
+
+            nav ul li a {
+                font-size: 1.125rem;
+                padding: 0.75rem 1.5rem;
+                justify-content: center;
+                margin: 0.25rem 1rem;
+            }
+
+            .dropdown-menu {
+                position: static;
+                box-shadow: none;
+                background-color: #f8f9fa;
+                padding: 0.5rem 1.5rem;
+            }
+
+            .dropdown-menu li a {
+                justify-content: center;
+                margin: 0.25rem 0;
+            }
+
+            .dropdown-toggle::after {
+                content: '\f078';
+                margin-left: 0.5rem;
+            }
+
+            .dropdown-menu.active {
+                display: block;
+            }
+        }
+
+        /* Contact Section */
+        .contact-hero {
+            background: linear-gradient(135deg, #3498db 0%, #8e44ad 100%);
+            color: white;
+            padding: clamp(4rem, 10vw, 6.25rem) 0 clamp(3rem, 8vw, 4.375rem);
+            text-align: center;
+            border-radius: 0 0 1.875rem 1.875rem;
+            margin-bottom: 3.125rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 Q50,20 100,0 L100,100 Q50,80 0,100 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+            background-size: cover;
+        }
+
+        .contact-hero h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(1.8rem, 5vw, 3.2rem);
+            font-weight: 700;
+            margin-bottom: 1.25rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .contact-hero p {
+            font-size: clamp(1rem, 3vw, 1.3rem);
+            max-width: 700px;
+            margin: 0 auto 1.875rem;
+            opacity: 0.95;
+        }
+
+        .section-title {
+            text-align: center;
+            margin: 3.75rem 0 2.5rem;
+        }
+
+        .section-title h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            color: #2c3e50;
+            margin-bottom: 0.9375rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70px;
+            height: 4px;
+            background: linear-gradient(to right, #3498db, #8e44ad);
+            border-radius: 2px;
+        }
+
+        .section-title p {
+            color: #7f8c8d;
+            max-width: 600px;
+            margin: 1.25rem auto 0;
+            font-size: clamp(0.875rem, 2.5vw, 1.1rem);
+        }
+
+        .contact-content {
+            background-color: #f1f2f6;
+            padding: clamp(3rem, 8vw, 5rem) 0;
+            border-radius: 1.875rem;
+            margin: 3.125rem 0;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: clamp(1.5rem, 4vw, 2.1875rem);
+        }
+
+        .contact-form, .contact-info {
+            background-color: white;
+            border-radius: 0.9375rem;
+            padding: clamp(1.875rem, 5vw, 2.5rem);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+        }
+
+        .contact-form label {
+            display: block;
+            font-size: clamp(0.9rem, 2.5vw, 1rem);
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ecf0f1;
+            border-radius: 0.5rem;
+            font-size: clamp(0.875rem, 2.5vw, 1rem);
+            margin-bottom: 1.25rem;
+            transition: border-color 0.3s;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            border-color: #3498db;
+            outline: none;
+        }
+
+        .contact-form textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .contact-form button {
+            display: inline-block;
+            background: linear-gradient(135deg, #3498db, #8e44ad);
+            color: white;
+            padding: 0.9375rem 1.875rem;
+            border: none;
+            border-radius: 0.5rem;
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(1rem, 2.5vw, 1.125rem);
+            font-weight: 500;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .contact-form button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .contact-info h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(1.3rem, 3.5vw, 1.7rem);
+            color: #2c3e50;
+            margin-bottom: 1.25rem;
+        }
+
+        .contact-info p {
+            font-size: clamp(0.9rem, 2.5vw, 1.05rem);
+            color: #7f8c8d;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-info p i {
+            margin-right: 0.75rem;
+            color: #3498db;
+        }
+
+        .map-placeholder {
+            height: 200px;
+            background-color: #ecf0f1;
+            border-radius: 0.5
