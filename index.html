@@ -346,177 +346,6 @@
             font-size: 1.05rem;
         }
 
-        /* Premium Section */
-        .premium-section {
-            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
-            border-radius: 20px;
-            padding: 50px;
-            margin: 60px auto;
-            max-width: 1000px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
-            display: flex;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .premium-content {
-            flex: 1;
-            padding-right: 40px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .premium-image {
-            flex: 1;
-            text-align: center;
-            position: relative;
-            z-index: 2;
-        }
-
-        .premium-icon {
-            font-size: 100px;
-            color: #ff6b6b;
-            margin-bottom: 20px;
-            text-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
-        }
-
-        .premium-section h2 {
-            font-family: 'Poppins', sans-serif;
-            font-size: 2.5rem;
-            color: #2c3e50;
-            margin-bottom: 20px;
-        }
-
-        .premium-section p {
-            font-size: 1.2rem;
-            color: #2c3e50;
-            margin-bottom: 30px;
-            line-height: 1.7;
-        }
-
-        .premium-features {
-            margin-bottom: 30px;
-        }
-
-        .premium-feature {
-            display: flex;
-            align-items: center;
-            margin-bottom: 15px;
-            color: #2c3e50;
-        }
-
-        .premium-feature i {
-            color: #ff6b6b;
-            margin-right: 10px;
-            font-size: 1.2rem;
-        }
-
-        .premium-btn {
-            background: linear-gradient(to right, #2c3e50, #1a252f);
-            color: white;
-            border: none;
-            padding: 15px 40px;
-            border-radius: 50px;
-            font-size: 1.2rem;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-weight: 600;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            display: inline-flex;
-            align-items: center;
-        }
-
-        .premium-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-        }
-
-        .premium-btn i {
-            margin-right: 10px;
-            font-size: 1.4rem;
-        }
-
-        /* Mobile App Section */
-        .mobile-section {
-            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-            border-radius: 20px;
-            padding: 60px 50px;
-            margin: 80px auto;
-            max-width: 1000px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
-            display: flex;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .mobile-content {
-            flex: 1;
-            padding-right: 40px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .mobile-image {
-            flex: 1;
-            text-align: center;
-            position: relative;
-            z-index: 2;
-        }
-
-        .mobile-icon {
-            font-size: 100px;
-            color: #ffffff;
-            margin-bottom: 20px;
-            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        .mobile-section h2 {
-            font-family: 'Poppins', sans-serif;
-            font-size: 2.5rem;
-            color: white;
-            margin-bottom: 20px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
-        }
-
-        .mobile-section p {
-            font-size: 1.2rem;
-            color: white;
-            margin-bottom: 30px;
-            line-height: 1.7;
-        }
-
-        .app-badges {
-            display: flex;
-            gap: 15px;
-            margin-top: 30px;
-        }
-
-        .app-badge {
-            display: inline-block;
-            background-color: white;
-            border-radius: 10px;
-            padding: 12px 25px;
-            text-decoration: none;
-            color: #2c3e50;
-            font-weight: 600;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-        }
-
-        .app-badge:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-        }
-
-        .app-badge i {
-            font-size: 1.8rem;
-            margin-right: 10px;
-        }
-
         /* Footer */
         footer {
             background: linear-gradient(135deg, #2c3e50 0%, #1a252f 100%);
@@ -614,26 +443,6 @@
             .hero p {
                 font-size: 1.1rem;
             }
-            
-            .premium-section,
-            .mobile-section {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .premium-content,
-            .mobile-content {
-                padding-right: 0;
-                margin-bottom: 40px;
-            }
-            
-            .premium-feature {
-                justify-content: center;
-            }
-            
-            .app-badges {
-                justify-content: center;
-            }
         }
 
         @media (max-width: 768px) {
@@ -666,11 +475,6 @@
             .section-title h2 {
                 font-size: 2.2rem;
             }
-            
-            .premium-section,
-            .mobile-section {
-                padding: 40px 25px;
-            }
         }
 
         @media (max-width: 480px) {
@@ -696,21 +500,6 @@
             
             .features {
                 padding: 60px 0;
-            }
-            
-            .premium-section h2,
-            .mobile-section h2 {
-                font-size: 2rem;
-            }
-            
-            .premium-section p,
-            .mobile-section p {
-                font-size: 1rem;
-            }
-            
-            .app-badges {
-                flex-direction: column;
-                align-items: center;
             }
         }
     </style>
@@ -831,47 +620,6 @@
         </div>
     </section>
 
-    <!-- Premium Upgrade Section -->
-    <section class="container">
-        <div class="premium-section">
-            <div class="premium-content">
-                <div class="premium-icon">
-                    <i class="fas fa-crown"></i>
-                </div>
-                <h2>Unlock Premium Power</h2>
-                <p>Upgrade to Premium for unlimited file size and advanced features!</p>
-                
-                <div class="premium-features">
-                    <div class="premium-feature">
-                        <i class="fas fa-check-circle"></i>
-                        <span>Unlimited file size processing</span>
-                    </div>
-                    <div class="premium-feature">
-                        <i class="fas fa-check-circle"></i>
-                        <span>Priority processing for faster results</span>
-                    </div>
-                    <div class="premium-feature">
-                        <i class="fas fa-check-circle"></i>
-                        <span>Advanced editing and conversion tools</span>
-                    </div>
-                    <div class="premium-feature">
-                        <i class="fas fa-check-circle"></i>
-                        <span>Ad-free experience</span>
-                    </div>
-                </div>
-                
-                <button class="premium-btn">
-                    <i class="fas fa-rocket"></i>
-                    Get Premium Now
-                </button>
-            </div>
-            
-            <div class="premium-image">
-                <img src="https://images.unsplash.com/photo-1561154464-82e9adf32764?auto=format&fit=crop&w=600&q=80" alt="Premium Features" style="width: 100%; max-width: 400px; border-radius: 15px; box-shadow: 0 15px 35px rgba(0,0,0,0.2);">
-            </div>
-        </div>
-    </section>
-
     <!-- Features Section -->
     <section class="features">
         <div class="container">
@@ -904,41 +652,6 @@
                     <h3>High Quality</h3>
                     <p>All our tools maintain the highest quality output with no visual loss.</p>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Mobile App Section -->
-    <section class="container">
-        <div class="mobile-section">
-            <div class="mobile-content">
-                <div class="mobile-icon">
-                    <i class="fas fa-mobile-alt"></i>
-                </div>
-                <h2>PDFMagic On The Go</h2>
-                <p>Try our mobile app! Edit PDFs on the go with our iOS and Android apps.</p>
-                
-                <div class="app-badges">
-                    <a href="#" class="app-badge">
-                        <i class="fab fa-apple"></i>
-                        <div>
-                            <div style="font-size: 0.8rem;">Download on the</div>
-                            <div style="font-size: 1.2rem;">App Store</div>
-                        </div>
-                    </a>
-                    
-                    <a href="#" class="app-badge">
-                        <i class="fab fa-google-play"></i>
-                        <div>
-                            <div style="font-size: 0.8rem;">GET IT ON</div>
-                            <div style="font-size: 1.2rem;">Google Play</div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            
-            <div class="mobile-image">
-                <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=600&q=80" alt="Mobile App" style="width: 100%; max-width: 300px; border-radius: 15px; box-shadow: 0 15px 35px rgba(0,0,0,0.2);">
             </div>
         </div>
     </section>
