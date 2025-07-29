@@ -1,0 +1,1194 @@
+<script type="text/javascript">
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+          return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+            try {
+                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                var firstSheetName = workbook.SheetNames[0];
+                var worksheet = workbook.Sheets[firstSheetName];
+
+                // Convert sheet to JSON to filter blank rows
+                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                // Filter out blank rows (rows where all cells are empty, null, or undefined)
+                var filteredData = jsonData.filter(row => row.some(filledCell));
+
+                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+                var headerRowIndex = filteredData.findIndex((row, index) =>
+                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                );
+                // Fallback
+                if (headerRowIndex === -1 || headerRowIndex > 25) {
+                  headerRowIndex = 0;
+                }
+
+                // Convert filtered JSON back to CSV
+                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                return csv;
+            } catch (e) {
+                console.error(e);
+                return "";
+            }
+        }
+        return gk_fileData[filename] || "";
+        }
+        </script><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Compress PDF files for free with PDFMagic. Reduce file size quickly and securely with customizable options.">
+    <meta name="keywords" content="compress pdf, reduce pdf size, pdfmagic, free pdf tools">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="PDFMagic Team">
+    <title>Compress PDF Files - PDFMagic</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e7eb 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: #ffffff;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 0.625rem 0;
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .logo i {
+            font-size: 2rem;
+            color: #e74c3c;
+            margin-right: 0.75rem;
+        }
+
+        .logo h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(1.5rem, 4vw, 1.625rem);
+            font-weight: 700;
+            color: #2c3e50;
+            background: linear-gradient(45deg, #3498db, #8e44ad);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+        }
+
+        nav ul li {
+            margin-left: 1.25rem;
+            position: relative;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #ffffff;
+            font-weight: 500;
+            font-size: clamp(0.875rem, 2.5vw, 1rem);
+            padding: 0.5rem 1rem;
+            background: linear-gradient(135deg, #3498db, #8e44ad);
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            border: 1px solid transparent;
+        }
+
+        nav ul li a:hover {
+            background: #e74c3c;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        nav ul li a:focus {
+            outline: 2px solid #e74c3c;
+            outline-offset: 2px;
+        }
+
+        nav ul li a::after {
+            display: none;
+        }
+
+        /* Dropdown Menu */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-toggle::after {
+            content: '\f078';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            margin-left: 0.5rem;
+            font-size: 0.8rem;
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #ffffff;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            min-width: 200px;
+            z-index: 1000;
+            border-radius: 0.5rem;
+            padding: 0.5rem 0;
+        }
+
+        .dropdown:hover .dropdown-menu,
+        .dropdown-menu.active {
+            display: block;
+        }
+
+        .dropdown-menu li {
+            margin: 0;
+            padding: 0.5rem 1rem;
+        }
+
+        .dropdown-menu li a {
+            justify-content: flex-start;
+            padding: 0.5rem 1rem;
+            font-size: 0.95rem;
+            background: linear-gradient(135deg, #3498db, #8e44ad);
+            color: #ffffff;
+            border-radius: 0.5rem;
+            margin: 0.25rem 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .dropdown-menu li a:hover {
+            background: #e74c3c;
+            color: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        .dropdown-menu li a:focus {
+            outline: 2px solid #e74c3c;
+            outline-offset: 2px;
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            font-size: 1.5rem;
+            color: #2c3e50;
+            cursor: pointer;
+            padding: 0.625rem;
+            border: none;
+            background: none;
+        }
+
+        /* Mobile Menu Styles */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            nav ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: #ffffff;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+                padding: 1.25rem 0;
+                z-index: 999;
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            nav ul li {
+                margin: 0.625rem 0;
+                text-align: center;
+            }
+
+            nav ul li a {
+                font-size: 1.125rem;
+                padding: 0.75rem 1.5rem;
+                justify-content: center;
+                margin: 0.25rem 1rem;
+            }
+
+            .dropdown-menu {
+                position: static;
+                box-shadow: none;
+                background-color: #f8f9fa;
+                padding: 0.5rem 1.5rem;
+            }
+
+            .dropdown-menu li a {
+                justify-content: center;
+                margin: 0.25rem 0;
+            }
+
+            .dropdown-toggle::after {
+                content: '\f078';
+                margin-left: 0.5rem;
+            }
+
+            .dropdown-menu.active {
+                display: block;
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #3498db 0%, #8e44ad 100%);
+            color: white;
+            padding: clamp(4rem, 10vw, 6.25rem) 0 clamp(3rem, 8vw, 4.375rem);
+            text-align: center;
+            border-radius: 0 0 1.875rem 1.875rem;
+            margin-bottom: 3.125rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 Q50,20 100,0 L100,100 Q50,80 0,100 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+            background-size: cover;
+        }
+
+        .hero h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(1.8rem, 5vw, 3.2rem);
+            font-weight: 700;
+            margin-bottom: 1.25rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            white-space: nowrap;
+        }
+
+        .hero p {
+            font-size: clamp(1rem, 3vw, 1.3rem);
+            max-width: 700px;
+            margin: 0 auto 1.875rem;
+            opacity: 0.95;
+        }
+
+        /* Tool Section */
+        .tool-section {
+            padding: clamp(3rem, 8vw, 5rem) 0;
+            background-color: #ffffff;
+            border-radius: 1.875rem;
+            margin: 3.125rem 0;
+            text-align: center;
+        }
+
+        .section-title {
+            text-align: center;
+            margin: 3.75rem 0 2.5rem;
+        }
+
+        .section-title h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            color: #2c3e50;
+            margin-bottom: 0.9375rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70px;
+            height: 4px;
+            background: linear-gradient(to right, #3498db, #8e44ad);
+            border-radius: 2px;
+        }
+
+        .section-title p {
+            color: #7f8c8d;
+            max-width: 600px;
+            margin: 1.25rem auto 0;
+            font-size: clamp(0.875rem, 2.5vw, 1.1rem);
+        }
+
+        .drop-area {
+            border: 3px dashed #3498db;
+            border-radius: 0.9375rem;
+            padding: clamp(2rem, 5vw, 2.5rem) clamp(1.25rem, 3vw, 1.875rem);
+            margin: 1.875rem 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: rgba(52, 152, 219, 0.05);
+        }
+
+        .drop-area:hover, .drop-area.dragover {
+            background: rgba(52, 152, 219, 0.1);
+            transform: translateY(-3px);
+        }
+
+        .drop-area i {
+            font-size: clamp(2rem, 5vw, 3rem);
+            color: #3498db;
+            margin-bottom: 0.9375rem;
+        }
+
+        .drop-area h3 {
+            color: #2c3e50;
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            margin-bottom: 0.625rem;
+        }
+
+        .drop-area p {
+            color: #7f8c8d;
+            font-size: clamp(0.875rem, 2.5vw, 1rem);
+        }
+
+        .controls {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(clamp(220px, 30vw, 250px), 1fr));
+            gap: clamp(1.5rem, 4vw, 2rem);
+            margin: 1.875rem 0;
+            padding: 1.875rem;
+            background: rgba(52, 152, 219, 0.05);
+            border-radius: 0.9375rem;
+            align-items: start;
+        }
+
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            min-height: 120px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+            font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(0.875rem, 2.5vw, 1rem);
+        }
+
+        input[type="number"], select, input[type="range"] {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #3498db;
+            border-radius: 0.5rem;
+            background: #ffffff;
+            color: #333;
+            font-size: clamp(0.875rem, 2.5vw, 1rem);
+            transition: all 0.3s ease;
+        }
+
+        input[type="number"]:focus, select:focus, input[type="range"]:focus {
+            outline: none;
+            border-color: #8e44ad;
+            box-shadow: 0 0 5px rgba(142, 68, 173, 0.5);
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            margin-top: 0.625rem;
+        }
+
+        input[type="checkbox"] {
+            width: 1.25rem;
+            height: 1.25rem;
+            margin-right: 0.625rem;
+            accent-color: #3498db;
+        }
+
+        #qualityValue {
+            display: inline-block;
+            width: 2.5rem;
+            text-align: center;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .preview-section {
+            margin: 1.875rem 0;
+            display: none;
+            background: #f8f9fa;
+            border-radius: 0.9375rem;
+            padding: 1.875rem;
+        }
+
+        .preview-title {
+            color: #2c3e50;
+            text-align: left;
+            margin-bottom: 0.9375rem;
+            padding-bottom: 0.625rem;
+            border-bottom: 2px solid #3498db;
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+        }
+
+        .preview-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            justify-content: center;
+        }
+
+        .preview-item {
+            padding: 0.75rem;
+            background: #ffffff;
+            border: 1px solid #3498db;
+            border-radius: 0.625rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            text-align: left;
+            font-size: clamp(0.875rem, 2vw, 1rem);
+            color: #2c3e50;
+        }
+
+        .button-container {
+            margin: 1.875rem 0;
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #3498db, #8e44ad);
+            color: white;
+            border: none;
+            padding: 0.9375rem 2.5rem;
+            font-size: clamp(0.875rem, 2.5vw, 1.1rem);
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn:disabled {
+            background: #cccccc;
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+
+        .btn:hover:not(:disabled) {
+            background: #e74c3c;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(231, 76, 60, 0.4);
+        }
+
+        .result-section {
+            display: none;
+            padding: clamp(2rem, 5vw, 2.5rem);
+            background: rgba(52, 152, 219, 0.05);
+            border-radius: 0.9375rem;
+            margin: 1.875rem 0;
+        }
+
+        .result-section h2 {
+            color: #2c3e50;
+            font-family: 'Poppins', sans-serif;
+            margin-bottom: 1.25rem;
+            font-size: clamp(1.5rem, 4vw, 2rem);
+        }
+
+        .thank-you {
+            font-size: clamp(1rem, 3vw, 1.2rem);
+            color: #3498db;
+            margin-bottom: 1.5625rem;
+        }
+
+        .download-btn, .back-btn {
+            background: linear-gradient(135deg, #3498db, #8e44ad);
+            padding: 0.9375rem 2.5rem;
+            font-size: clamp(0.875rem, 2.5vw, 1.1rem);
+            border-radius: 0.5rem;
+            color: white;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            margin: 0.5rem;
+        }
+
+        .download-btn:hover, .back-btn:hover {
+            background: #e74c3c;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(231, 76, 60, 0.4);
+        }
+
+        .file-input {
+            display: none;
+        }
+
+        .file-info {
+            margin-top: 0.9375rem;
+            color: #7f8c8d;
+            font-size: clamp(0.875rem, 2.5vw, 1rem);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #2c3e50 0%, #1a252f 100%);
+            color: #ecf0f1;
+            padding: clamp(3rem, 8vw, 5rem) 0 1.875rem;
+            border-radius: 1.875rem 1.875rem 0 0;
+            margin-top: clamp(3rem, 8vw, 4.375rem);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(clamp(180px, 25vw, 200px), 1fr));
+            gap: clamp(1.5rem, 4vw, 2.5rem);
+            margin-bottom: 3.125rem;
+        }
+
+        .footer-column h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            margin-bottom: 1.5625rem;
+            color: white;
+            position: relative;
+            padding-bottom: 0.625rem;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: #3498db;
+            border-radius: 2px;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-column ul li a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: clamp(0.875rem, 2.5vw, 1.05rem);
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-column ul li a i {
+            margin-right: 0.5rem;
+        }
+
+        .footer-column ul li a:hover {
+            color: white;
+            padding-left: 0.3125rem;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 0.9375rem;
+            margin-top: 1.5625rem;
+        }
+
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background-color: #34495e;
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s;
+            font-size: 1.2rem;
+        }
+
+        .social-icons a:hover {
+            background: linear-gradient(135deg, #3498db, #8e44ad);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 1.875rem;
+            border-top: 1px solid #34495e;
+            color: #bdc3c7;
+            font-size: clamp(0.875rem, 2.5vw, 1rem);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h2 {
+                font-size: clamp(1.8rem, 4.5vw, 2.8rem);
+            }
+            
+            .hero p {
+                font-size: clamp(0.875rem, 2.5vw, 1.1rem);
+            }
+            
+            .preview-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 0.9375rem 0;
+            }
+            
+            .hero {
+                padding: clamp(3rem, 8vw, 5rem) 0 clamp(2.5rem, 6vw, 3.125rem);
+            }
+            
+            .hero h2 {
+                font-size: clamp(1.5rem, 4vw, 2.2rem);
+                white-space: normal;
+            }
+            
+            .section-title h2 {
+                font-size: clamp(1.5rem, 4vw, 2.2rem);
+            }
+            
+            .tool-section {
+                padding: clamp(2.5rem, 6vw, 3.75rem) 0;
+            }
+            
+            .controls {
+                grid-template-columns: 1fr;
+            }
+            
+            .control-group {
+                min-height: auto;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo h1 {
+                font-size: clamp(1.2rem, 3.5vw, 1.5rem);
+            }
+            
+            .logo i {
+                font-size: 1.5rem;
+            }
+            
+            .hamburger {
+                font-size: 1.25rem;
+            }
+            
+            .hero h2 {
+                font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+            }
+            
+            .hero p {
+                font-size: clamp(0.8rem, 2.5vw, 1rem);
+            }
+            
+            .section-title h2 {
+                font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+            }
+            
+            .section-title p {
+                font-size: clamp(0.75rem, 2vw, 0.875rem);
+            }
+            
+            .preview-item {
+                font-size: clamp(0.75rem, 2vw, 0.875rem);
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .social-icons a {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-top">
+                <a href="index.html" class="logo" aria-label="PDFMagic Home">
+                    <i class="fas fa-file-pdf" aria-hidden="true"></i>
+                    <h1>PDFMagic</h1>
+                </a>
+                <nav role="navigation" aria-label="Main navigation">
+                    <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <ul>
+                        <li><a href="index.html" aria-label="Home page"><i class="fas fa-home" aria-hidden="true"></i> Home</a></li>
+                        <li><a href="about.html" aria-label="About our company"><i class="fas fa-info-circle" aria-hidden="true"></i> About Us</a></li>
+                        <li><a href="contact.html" aria-label="Contact us"><i class="fas fa-envelope" aria-hidden="true"></i> Contact Us</a></li>
+                        <li><a href="privacy-policy.html" aria-label="Read our privacy policy"><i class="fas fa-shield-alt" aria-hidden="true"></i> Privacy Policy</a></li>
+                        <li><a href="terms-of-service.html" aria-label="Read our terms of service"><i class="fas fa-file-contract" aria-hidden="true"></i> Terms of Service</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" aria-label="View all PDF tools" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-tools" aria-hidden="true"></i> All Tools
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="jpg-to-pdf.html" aria-label="Convert JPG to PDF"><i class="fas fa-exchange-alt" aria-hidden="true"></i> JPG to PDF</a></li>
+                                <li><a href="compress-pdf.html" aria-label="Compress PDF files"><i class="fas fa-compress-alt" aria-hidden="true"></i> Compress PDF</a></li>
+                                <li><a href="merge-pdf.html" aria-label="Merge multiple PDFs"><i class="fas fa-object-group" aria-hidden="true"></i> Merge PDF</a></li>
+                                <li><a href="split-pdf.html" aria-label="Split PDF into multiple files"><i class="fas fa-cut" aria-hidden="true"></i> Split PDF</a></li>
+                                <li><a href="edit-pdf.html" aria-label="Edit PDF files"><i class="fas fa-edit" aria-hidden="true"></i> Edit PDF</a></li>
+                                <li><a href="protect-pdf.html" aria-label="Protect PDF files"><i class="fas fa-lock" aria-hidden="true"></i> Protect PDF</a></li>
+                                <li><a href="unlock-pdf.html" aria-label="Unlock PDF files"><i class="fas fa-unlock" aria-hidden="true"></i> Unlock PDF</a></li>
+                                <li><a href="sign-pdf.html" aria-label="Sign PDF files"><i class="fas fa-file-signature" aria-hidden="true"></i> Sign PDF</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" aria-labelledby="hero-heading">
+            <div class="container">
+                <h2 id="hero-heading">Compress PDF Files</h2>
+                <p>Reduce your PDF file size quickly and securely with customizable compression options.</p>
+            </div>
+        </section>
+
+        <!-- Tool Section -->
+        <section class="tool-section" aria-labelledby="tool-heading">
+            <div class="container">
+                <div class="section-title">
+                    <h2 id="tool-heading">Compress Your PDF Files</h2>
+                    <p>Upload your PDF and customize compression settings</p>
+                </div>
+                <div class="drop-area" id="dropArea">
+                    <i class="fas fa-cloud-upload-alt" aria-hidden="true"></i>
+                    <h3>Drag & Drop your PDF files here</h3>
+                    <p>or</p>
+                    <button class="btn" id="browseBtn">Browse Files</button>
+                    <input type="file" id="fileInput" class="file-input" accept=".pdf" aria-label="Upload PDF files">
+                    <p class="file-info">Supports PDF files only</p>
+                </div>
+                
+                <div class="controls">
+                    <div class="control-group">
+                        <label for="targetSize">Target File Size (MB):</label>
+                        <input type="number" id="targetSize" min="0.1" step="0.1" placeholder="e.g., 2.5" aria-label="Enter target file size in MB">
+                    </div>
+                    
+                    <div class="control-group">
+                        <label for="quality">Compression Level: <span id="qualityValue">50</span>%</label>
+                        <input type="range" id="quality" min="0" max="100" value="50" aria-label="Adjust compression level">
+                    </div>
+                    
+                    <div class="control-group">
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="optimizeImages" aria-label="Optimize images in PDF">
+                            <label for="optimizeImages">Optimize images</label>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="removeMetadata" aria-label="Remove metadata from PDF">
+                            <label for="removeMetadata">Remove metadata</label>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="downsampleImages" aria-label="Downsample images in PDF">
+                            <label for="downsampleImages">Downsample images</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="preview-section" id="previewSection">
+                    <h3 class="preview-title">Compression Preview</h3>
+                    <div class="preview-container" id="previewContainer"></div>
+                </div>
+                
+                <div class="button-container">
+                    <button class="btn" id="resetBtn">Reset</button>
+                    <button class="btn" id="compressBtn" disabled>Compress PDF</button>
+                </div>
+                
+                <div class="result-section" id="resultSection">
+                    <h2>Compression Complete!</h2>
+                    <p class="thank-you">Thank you for using our PDF compressor</p>
+                    <a href="#" class="download-btn" id="downloadBtn">Download PDF</a>
+                    <button class="back-btn" id="backBtn">Back</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer aria-labelledby="footer-heading">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3 id="footer-heading">PDFMagic</h3>
+                    <p>Free online PDF tools to solve all your document problems. Fast, secure, and easy to use.</p>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/pdfmagic" aria-label="Follow us on Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+                        <a href="https://www.twitter.com/pdfmagic" aria-label="Follow us on Twitter"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+                        <a href="https://www.instagram.com/pdfmagic" aria-label="Follow us on Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                        <a href="https://www.linkedin.com/company/pdfmagic" aria-label="Follow us on LinkedIn"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Tools</h3>
+                    <ul>
+                        <li><a href="jpg-to-pdf.html" aria-label="Convert JPG to PDF"><i class="fas fa-chevron-right" aria-hidden="true"></i> JPG to PDF</a></li>
+                        <li><a href="compress-pdf.html" aria-label="Compress PDF files"><i class="fas fa-compress-alt" aria-hidden="true"></i> Compress PDF</a></li>
+                        <li><a href="merge-pdf.html" aria-label="Merge multiple PDFs"><i class="fas fa-object-group" aria-hidden="true"></i> Merge PDF</a></li>
+                        <li><a href="split-pdf.html" aria-label="Split PDF into multiple files"><i class="fas fa-cut" aria-hidden="true"></i> Split PDF</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="blog.html" aria-label="Read our blog"><i class="fas fa-chevron-right" aria-hidden="true"></i> Blog</a></li>
+                        <li><a href="tutorials.html" aria-label="View tutorials"><i class="fas fa-chevron-right" aria-hidden="true"></i> Tutorials</a></li>
+                        <li><a href="help-center.html" aria-label="Visit help center"><i class="fas fa-chevron-right" aria-hidden="true"></i> Help Center</a></li>
+                        <li><a href="faq.html" aria-label="Read FAQs"><i class="fas fa-chevron-right" aria-hidden="true"></i> FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="about.html" aria-label="About our company"><i class="fas fa-chevron-right" aria-hidden="true"></i> About Us</a></li>
+                        <li><a href="contact.html" aria-label="Contact us"><i class="fas fa-chevron-right" aria-hidden="true"></i> Contact Us</a></li>
+                        <li><a href="privacy-policy.html" aria-label="Read our privacy policy"><i class="fas fa-chevron-right" aria-hidden="true"></i> Privacy Policy</a></li>
+                        <li><a href="terms-of-service.html" aria-label="Read our terms of service"><i class="fas fa-chevron-right" aria-hidden="true"></i> Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; <span id="current-year"></span> PDFMagic. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Compress PDF Files - PDFMagic",
+        "url": "https://www.pdfmagic.com/compress-pdf.html",
+        "description": "Compress PDF files for free with PDFMagic. Reduce file size quickly and securely with customizable options."
+    }
+    </script>
+
+    <!-- JavaScript for Hamburger, Dropdown Menu, Dynamic Year, and PDF Compressor -->
+    <script>
+        // Hamburger and Dropdown Menu
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('nav ul');
+        const hamburgerIcon = hamburger ? hamburger.querySelector('i') : null;
+        const dropdownToggle = document.querySelector('.dropdown-toggle');
+        const dropdownMenu = document.querySelector('.dropdown-menu');
+        const currentYearSpan = document.querySelector('#current-year');
+
+        if (currentYearSpan) {
+            currentYearSpan.textContent = new Date().getFullYear();
+        }
+
+        if (hamburger && navMenu && hamburgerIcon) {
+            hamburger.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+                const isExpanded = navMenu.classList.contains('active');
+                hamburger.setAttribute('aria-expanded', isExpanded);
+                hamburgerIcon.classList.toggle('fa-bars');
+                hamburgerIcon.classList.toggle('fa-times');
+                if (!isExpanded) {
+                    dropdownMenu.classList.remove('active');
+                    dropdownToggle.setAttribute('aria-expanded', 'false');
+                }
+            });
+        }
+
+        if (dropdownToggle && dropdownMenu) {
+            dropdownToggle.addEventListener('click', (e) => {
+                if (window.innerWidth <= 768) {
+                    e.preventDefault();
+                    dropdownMenu.classList.toggle('active');
+                    const isExpanded = dropdownMenu.classList.contains('active');
+                    dropdownToggle.setAttribute('aria-expanded', isExpanded);
+                }
+            });
+        }
+
+        document.addEventListener('click', (event) => {
+            if (hamburger && navMenu && !hamburger.contains(event.target) && !navMenu.contains(event.target) && navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+                hamburger.setAttribute('aria-expanded', 'false');
+                hamburgerIcon.classList.add('fa-bars');
+                hamburgerIcon.classList.remove('fa-times');
+                dropdownMenu.classList.remove('active');
+                dropdownToggle.setAttribute('aria-expanded', 'false');
+            }
+        });
+
+        // PDF Compressor Logic
+        const dropArea = document.getElementById('dropArea');
+        const fileInput = document.getElementById('fileInput');
+        const browseBtn = document.getElementById('browseBtn');
+        const previewSection = document.getElementById('previewSection');
+        const previewContainer = document.getElementById('previewContainer');
+        const compressBtn = document.getElementById('compressBtn');
+        const resetBtn = document.getElementById('resetBtn');
+        const targetSize = document.getElementById('targetSize');
+        const qualitySlider = document.getElementById('quality');
+        const qualityValue = document.getElementById('qualityValue');
+        const optimizeImages = document.getElementById('optimizeImages');
+        const removeMetadata = document.getElementById('removeMetadata');
+        const downsampleImages = document.getElementById('downsampleImages');
+        const resultSection = document.getElementById('resultSection');
+        const downloadBtn = document.getElementById('downloadBtn');
+        const backBtn = document.getElementById('backBtn');
+
+        let uploadedFile = null;
+        let lastDownloadUrl = null;
+
+        qualitySlider.addEventListener('input', () => {
+            qualityValue.textContent = qualitySlider.value;
+            if (uploadedFile) {
+                updatePreview();
+            }
+        });
+
+        [targetSize, optimizeImages, removeMetadata, downsampleImages].forEach(input => {
+            input.addEventListener('change', () => {
+                if (uploadedFile) {
+                    updatePreview();
+                }
+            });
+        });
+
+        browseBtn.addEventListener('click', () => {
+            fileInput.click();
+        });
+
+        fileInput.addEventListener('change', (e) => {
+            handleFiles(e.target.files);
+        });
+
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            dropArea.addEventListener(eventName, preventDefaults, false);
+        });
+
+        function preventDefaults(e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+
+        ['dragenter', 'dragover'].forEach(eventName => {
+            dropArea.addEventListener(eventName, highlight, false);
+        });
+
+        ['dragleave', 'drop'].forEach(eventName => {
+            dropArea.addEventListener(eventName, unhighlight, false);
+        });
+
+        function highlight() {
+            dropArea.classList.add('dragover');
+        }
+
+        function unhighlight() {
+            dropArea.classList.remove('dragover');
+        }
+
+        dropArea.addEventListener('drop', (e) => {
+            const files = e.dataTransfer.files;
+            handleFiles(files);
+        }, false);
+
+        function handleFiles(files) {
+            const pdfFiles = Array.from(files).filter(file => 
+                file.type === 'application/pdf' || file.name.toLowerCase().endsWith('.pdf')
+            );
+
+            if (pdfFiles.length === 0) {
+                alert('Please upload a PDF file.');
+                return;
+            }
+
+            if (pdfFiles.length > 1) {
+                alert('Please upload only one PDF file at a time.');
+                return;
+            }
+
+            uploadedFile = pdfFiles[0];
+            compressBtn.disabled = false;
+            previewSection.style.display = 'block';
+            updatePreview();
+        }
+
+        function updatePreview() {
+            const originalSize = (uploadedFile.size / 1024 / 1024).toFixed(2); // MB
+            const quality = parseInt(qualitySlider.value) / 100; // 0-1 scale
+            const target = parseFloat(targetSize.value) || originalSize;
+            let compressionRatio = 1 - quality;
+
+            // Adjust compression ratio based on additional options
+            if (optimizeImages.checked) compressionRatio += 0.1;
+            if (removeMetadata.checked) compressionRatio += 0.05;
+            if (downsampleImages.checked) compressionRatio += 0.15;
+
+            // Ensure compressionRatio doesn't exceed 1 or go below 0.1
+            compressionRatio = Math.min(1, Math.max(0.1, compressionRatio));
+
+            // Calculate estimated size, ensuring it's not larger than target or original
+            let estimatedSize = originalSize * (1 - compressionRatio);
+            if (target < originalSize) {
+                estimatedSize = Math.min(estimatedSize, target);
+            }
+            estimatedSize = Math.max(0.1, estimatedSize).toFixed(2); // Minimum 0.1 MB
+
+            previewContainer.innerHTML = `
+                <div class="preview-item">
+                    <p><strong>File:</strong> ${uploadedFile.name}</p>
+                    <p><strong>Original Size:</strong> ${originalSize} MB</p>
+                    <p><strong>Estimated Compressed Size:</strong> ${estimatedSize} MB</p>
+                </div>
+            `;
+        }
+
+        resetBtn.addEventListener('click', () => {
+            uploadedFile = null;
+            fileInput.value = '';
+            targetSize.value = '';
+            qualitySlider.value = 50;
+            qualityValue.textContent = '50';
+            optimizeImages.checked = false;
+            removeMetadata.checked = false;
+            downsampleImages.checked = false;
+            previewSection.style.display = 'none';
+            previewContainer.innerHTML = '';
+            compressBtn.disabled = true;
+        });
+
+        compressBtn.addEventListener('click', async () => {
+            if (!uploadedFile) return;
+
+            compressBtn.textContent = 'Compressing...';
+            compressBtn.disabled = true;
+
+            try {
+                // Simulate compression (client-side limitation)
+                const blob = uploadedFile; // In a real app, this would involve server-side processing
+                const url = URL.createObjectURL(blob);
+                
+                if (lastDownloadUrl) {
+                    URL.revokeObjectURL(lastDownloadUrl);
+                }
+                lastDownloadUrl = url;
+                downloadBtn.href = url;
+                downloadBtn.download = 'PDFMagic.pdf';
+                downloadBtn.textContent = 'Download PDF';
+
+                document.querySelector('.section-title').style.display = 'none';
+                document.querySelector('.controls').style.display = 'none';
+                previewSection.style.display = 'none';
+                dropArea.style.display = 'none';
+                document.querySelector('.button-container').style.display = 'none';
+                resultSection.style.display = 'block';
+
+            } catch (error) {
+                console.error('Compression error:', error);
+                alert('An error occurred during compression. Please try again.');
+                compressBtn.textContent = 'Compress PDF';
+                compressBtn.disabled = false;
+            }
+        });
+
+        backBtn.addEventListener('click', () => {
+            resultSection.style.display = 'none';
+            document.querySelector('.section-title').style.display = 'block';
+            document.querySelector('.controls').style.display = 'grid';
+            dropArea.style.display = 'block';
+            document.querySelector('.button-container').style.display = 'flex';
+            if (uploadedFile) {
+                previewSection.style.display = 'block';
+                compressBtn.disabled = false;
+            } else {
+                previewSection.style.display = 'none';
+                compressBtn.disabled = true;
+            }
+            compressBtn.textContent = 'Compress PDF';
+            if (lastDownloadUrl) {
+                URL.revokeObjectURL(lastDownloadUrl);
+                lastDownloadUrl = null;
+            }
+        });
+    </script>
+</body>
+</html>
