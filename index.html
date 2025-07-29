@@ -83,6 +83,7 @@
 
         nav ul li {
             margin-left: 1.25rem;
+            position: relative;
         }
 
         nav ul li a {
@@ -92,7 +93,6 @@
             font-size: clamp(0.875rem, 2.5vw, 1rem);
             transition: all 0.3s;
             padding: 0.5rem 0.3125rem;
-            position: relative;
             display: flex;
             align-items: center;
         }
@@ -118,6 +118,53 @@
 
         nav ul li a:hover::after {
             width: 100%;
+        }
+
+        /* Dropdown Menu */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-toggle::after {
+            content: '\f078'; /* Font Awesome chevron-down */
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            margin-left: 0.5rem;
+            font-size: 0.8rem;
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #ffffff;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            min-width: 200px;
+            z-index: 1000;
+            border-radius: 0.5rem;
+            padding: 0.5rem 0;
+        }
+
+        .dropdown:hover .dropdown-menu,
+        .dropdown-menu.active {
+            display: block;
+        }
+
+        .dropdown-menu li {
+            margin: 0;
+            padding: 0.5rem 1rem;
+        }
+
+        .dropdown-menu li a {
+            justify-content: flex-start;
+            padding: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .dropdown-menu li a:hover {
+            background-color: #f1f2f6;
+            color: #e74c3c;
         }
 
         /* Hamburger Menu */
@@ -167,6 +214,26 @@
 
             nav ul li a::after {
                 display: none;
+            }
+
+            .dropdown-menu {
+                position: static;
+                box-shadow: none;
+                background-color: #f8f9fa;
+                padding: 0.5rem 1.5rem;
+            }
+
+            .dropdown-menu li a {
+                justify-content: center;
+            }
+
+            .dropdown-toggle::after {
+                content: '\f078';
+                margin-left: 0.5rem;
+            }
+
+            .dropdown-menu.active {
+                display: block;
             }
         }
 
@@ -548,12 +615,18 @@
                         <i class="fas fa-bars"></i>
                     </button>
                     <ul>
-                        <li><a href="#" aria-label="View all PDF tools"><i class="fas fa-tools" aria-hidden="true"></i> All Tools</a></li>
-                        <li><a href="#" aria-label="Merge multiple PDFs"><i class="fas fa-object-group" aria-hidden="true"></i> Merge PDF</a></li>
-                        <li><a href="#" aria-label="Split PDF into multiple files"><i class="fas fa-cut" aria-hidden="true"></i> Split PDF</a></li>
-                        <li><a href="#" aria-label="Compress PDF files"><i class="fas fa-compress-alt" aria-hidden="true"></i> Compress PDF</a></li>
-                        <li><a href="#" aria-label="Convert JPG to PDF"><i class="fas fa-exchange-alt" aria-hidden="true"></i> JPG to PDF</a></li>
-                        <li><a href="#" aria-label="Edit PDF files"><i class="fas fa-edit" aria-hidden="true"></i> Edit PDF</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" aria-label="View all PDF tools" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-tools" aria-hidden="true"></i> All Tools
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#" aria-label="Merge multiple PDFs"><i class="fas fa-object-group" aria-hidden="true"></i> Merge PDF</a></li>
+                                <li><a href="#" aria-label="Split PDF into multiple files"><i class="fas fa-cut" aria-hidden="true"></i> Split PDF</a></li>
+                                <li><a href="#" aria-label="Compress PDF files"><i class="fas fa-compress-alt" aria-hidden="true"></i> Compress PDF</a></li>
+                                <li><a href="#" aria-label="Convert JPG to PDF"><i class="fas fa-exchange-alt" aria-hidden="true"></i> JPG to PDF</a></li>
+                                <li><a href="#" aria-label="Edit PDF files"><i class="fas fa-edit" aria-hidden="true"></i> Edit PDF</a></li>
+                            </ul>
+                        </li>
                     </ul>
                 </nav>
             </div>
@@ -766,18 +839,35 @@
     }
     </script>
 
-    <!-- JavaScript for Hamburger Menu -->
+    <!-- JavaScript for Hamburger and Dropdown Menu -->
     <script>
         const hamburger = document.querySelector('.hamburger');
         const navMenu = document.querySelector('nav ul');
         const hamburgerIcon = hamburger.querySelector('i');
+        const dropdownToggle = document.querySelector('.dropdown-toggle');
+        const dropdownMenu = document.querySelector('.dropdown-menu');
 
+        // Hamburger menu toggle
         hamburger.addEventListener('click', () => {
             navMenu.classList.toggle('active');
             const isExpanded = navMenu.classList.contains('active');
             hamburger.setAttribute('aria-expanded', isExpanded);
             hamburgerIcon.classList.toggle('fa-bars');
             hamburgerIcon.classList.toggle('fa-times');
+            if (!isExpanded) {
+                dropdownMenu.classList.remove('active');
+                dropdownToggle.setAttribute('aria-expanded', 'false');
+            }
+        });
+
+        // Dropdown menu toggle for mobile
+        dropdownToggle.addEventListener('click', (e) => {
+            if (window.innerWidth <= 768) {
+                e.preventDefault();
+                dropdownMenu.classList.toggle('active');
+                const isExpanded = dropdownMenu.classList.contains('active');
+                dropdownToggle.setAttribute('aria-expanded', isExpanded);
+            }
         });
 
         // Close menu when clicking outside
@@ -787,6 +877,8 @@
                 hamburger.setAttribute('aria-expanded', 'false');
                 hamburgerIcon.classList.add('fa-bars');
                 hamburgerIcon.classList.remove('fa-times');
+                dropdownMenu.classList.remove('active');
+                dropdownToggle.setAttribute('aria-expanded', 'false');
             }
         });
     </script>
