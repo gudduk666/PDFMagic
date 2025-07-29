@@ -88,13 +88,16 @@
 
         nav ul li a {
             text-decoration: none;
-            color: #2c3e50;
+            color: #ffffff;
             font-weight: 500;
             font-size: clamp(0.875rem, 2.5vw, 1rem);
-            transition: all 0.3s;
-            padding: 0.5rem 0.3125rem;
+            padding: 0.5rem 1rem;
+            background: linear-gradient(135deg, #3498db, #8e44ad);
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
             display: flex;
             align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
 
         nav ul li a i {
@@ -102,22 +105,18 @@
         }
 
         nav ul li a:hover {
-            color: #e74c3c;
+            background: linear-gradient(135deg, #2980b9, #6c3483);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        nav ul li a:focus {
+            outline: 2px solid #e74c3c;
+            outline-offset: 2px;
         }
 
         nav ul li a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: #3498db;
-            transition: width 0.3s;
-        }
-
-        nav ul li a:hover::after {
-            width: 100%;
+            display: none;
         }
 
         /* Dropdown Menu */
@@ -126,7 +125,7 @@
         }
 
         .dropdown-toggle::after {
-            content: '\f078'; /* Font Awesome chevron-down */
+            content: '\f078';
             font-family: 'Font Awesome 6 Free';
             font-weight: 900;
             margin-left: 0.5rem;
@@ -158,13 +157,25 @@
 
         .dropdown-menu li a {
             justify-content: flex-start;
-            padding: 0.5rem;
+            padding: 0.5rem 1rem;
             font-size: 0.95rem;
+            background: linear-gradient(135deg, #3498db, #8e44ad);
+            color: #ffffff;
+            border-radius: 0.5rem;
+            margin: 0.25rem 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
 
         .dropdown-menu li a:hover {
-            background-color: #f1f2f6;
-            color: #e74c3c;
+            background: linear-gradient(135deg, #2980b9, #6c3483);
+            color: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        .dropdown-menu li a:focus {
+            outline: 2px solid #e74c3c;
+            outline-offset: 2px;
         }
 
         /* Hamburger Menu */
@@ -208,12 +219,9 @@
 
             nav ul li a {
                 font-size: 1.125rem;
-                padding: 0.625rem;
+                padding: 0.75rem 1.5rem;
                 justify-content: center;
-            }
-
-            nav ul li a::after {
-                display: none;
+                margin: 0.25rem 1rem;
             }
 
             .dropdown-menu {
@@ -225,6 +233,7 @@
 
             .dropdown-menu li a {
                 justify-content: center;
+                margin: 0.25rem 0;
             }
 
             .dropdown-toggle::after {
@@ -326,10 +335,17 @@
             padding: clamp(1.5rem, 4vw, 2.1875rem) 1.5625rem;
             text-align: center;
             transition: all 0.4s;
-            cursor: pointer;
             border: 1px solid rgba(236, 240, 241, 0.8);
             position: relative;
             overflow: hidden;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+            cursor: pointer;
         }
 
         .tool-card::before {
@@ -340,11 +356,6 @@
             width: 100%;
             height: 5px;
             background: linear-gradient(to right, #3498db, #8e44ad);
-        }
-
-        .tool-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
         }
 
         .tool-icon {
@@ -620,15 +631,15 @@
                                 <i class="fas fa-tools" aria-hidden="true"></i> All Tools
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a href="#" aria-label="Merge multiple PDFs"><i class="fas fa-object-group" aria-hidden="true"></i> Merge PDF</a></li>
-                                <li><a href="#" aria-label="Split PDF into multiple files"><i class="fas fa-cut" aria-hidden="true"></i> Split PDF</a></li>
-                                <li><a href="#" aria-label="Compress PDF files"><i class="fas fa-compress-alt" aria-hidden="true"></i> Compress PDF</a></li>
-                                <li><a href="#" aria-label="Convert JPG to PDF"><i class="fas fa-exchange-alt" aria-hidden="true"></i> JPG to PDF</a></li>
-                                <li><a href="#" aria-label="Edit PDF files"><i class="fas fa-edit" aria-hidden="true"></i> Edit PDF</a></li>
+                                <li><a href="merge-pdf.html" aria-label="Merge multiple PDFs"><i class="fas fa-object-group" aria-hidden="true"></i> Merge PDF</a></li>
+                                <li><a href="split-pdf.html" aria-label="Split PDF into multiple files"><i class="fas fa-cut" aria-hidden="true"></i> Split PDF</a></li>
+                                <li><a href="compress-pdf.html" aria-label="Compress PDF files"><i class="fas fa-compress-alt" aria-hidden="true"></i> Compress PDF</a></li>
+                                <li><a href="jpg-to-pdf.html" aria-label="Convert JPG to PDF"><i class="fas fa-exchange-alt" aria-hidden="true"></i> JPG to PDF</a></li>
+                                <li><a href="edit-pdf.html" aria-label="Edit PDF files"><i class="fas fa-edit" aria-hidden="true"></i> Edit PDF</a></li>
                             </ul>
                         </li>
-                        <li><a href="#" aria-label="About our company"><i class="fas fa-info-circle" aria-hidden="true"></i> About Us</a></li>
-                        <li><a href="#" aria-label="Contact us"><i class="fas fa-envelope" aria-hidden="true"></i> Contact Us</a></li>
+                        <li><a href="about.html" aria-label="About our company"><i class="fas fa-info-circle" aria-hidden="true"></i> About Us</a></li>
+                        <li><a href="contact.html" aria-label="Contact us"><i class="fas fa-envelope" aria-hidden="true"></i> Contact Us</a></li>
                     </ul>
                 </nav>
             </div>
@@ -653,69 +664,69 @@
             </div>
             
             <div class="tools-grid">
-                <article class="tool-card" aria-labelledby="jpg-to-pdf-heading">
+                <a href="jpg-to-pdf.html" class="tool-card" aria-labelledby="jpg-to-pdf-heading">
                     <div class="tool-icon">
                         <i class="fas fa-exchange-alt" aria-hidden="true"></i>
                     </div>
                     <h3 id="jpg-to-pdf-heading">JPG to PDF</h3>
                     <p>Convert to and from PDF with various formats</p>
-                </article>
+                </a>
                 
-                <article class="tool-card" aria-labelledby="compress-pdf-heading">
+                <a href="compress-pdf.html" class="tool-card" aria-labelledby="compress-pdf-heading">
                     <div class="tool-icon">
                         <i class="fas fa-compress-alt" aria-hidden="true"></i>
                     </div>
                     <h3 id="compress-pdf-heading">Compress PDF</h3>
                     <p>Reduce file size without losing quality</p>
-                </article>
+                </a>
                 
-                <article class="tool-card" aria-labelledby="merge-pdf-heading">
+                <a href="merge-pdf.html" class="tool-card" aria-labelledby="merge-pdf-heading">
                     <div class="tool-icon">
                         <i class="fas fa-object-group" aria-hidden="true"></i>
                     </div>
                     <h3 id="merge-pdf-heading">Merge PDF</h3>
                     <p>Combine multiple PDFs into one document</p>
-                </article>
+                </a>
                 
-                <article class="tool-card" aria-labelledby="split-pdf-heading">
+                <a href="split-pdf.html" class="tool-card" aria-labelledby="split-pdf-heading">
                     <div class="tool-icon">
                         <i class="fas fa-cut" aria-hidden="true"></i>
                     </div>
                     <h3 id="split-pdf-heading">Split PDF</h3>
                     <p>Separate one PDF into multiple files</p>
-                </article>
+                </a>
                 
-                <article class="tool-card" aria-labelledby="edit-pdf-heading">
+                <a href="edit-pdf.html" class="tool-card" aria-labelledby="edit-pdf-heading">
                     <div class="tool-icon">
                         <i class="fas fa-edit" aria-hidden="true"></i>
                     </div>
                     <h3 id="edit-pdf-heading">Edit PDF</h3>
                     <p>Add text, images, and shapes to your PDF</p>
-                </article>
+                </a>
                 
-                <article class="tool-card" aria-labelledby="protect-pdf-heading">
+                <a href="protect-pdf.html" class="tool-card" aria-labelledby="protect-pdf-heading">
                     <div class="tool-icon">
                         <i class="fas fa-lock" aria-hidden="true"></i>
                     </div>
                     <h3 id="protect-pdf-heading">Protect PDF</h3>
                     <p>Add password and permissions to your files</p>
-                </article>
+                </a>
                 
-                <article class="tool-card" aria-labelledby="unlock-pdf-heading">
+                <a href="unlock-pdf.html" class="tool-card" aria-labelledby="unlock-pdf-heading">
                     <div class="tool-icon">
                         <i class="fas fa-unlock" aria-hidden="true"></i>
                     </div>
                     <h3 id="unlock-pdf-heading">Unlock PDF</h3>
                     <p>Remove password from PDF files</p>
-                </article>
+                </a>
                 
-                <article class="tool-card" aria-labelledby="sign-pdf-heading">
+                <a href="sign-pdf.html" class="tool-card" aria-labelledby="sign-pdf-heading">
                     <div class="tool-icon">
                         <i class="fas fa-file-signature" aria-hidden="true"></i>
                     </div>
                     <h3 id="sign-pdf-heading">Sign PDF</h3>
                     <p>Add digital signatures to your documents</p>
-                </article>
+                </a>
             </div>
         </section>
 
@@ -764,48 +775,48 @@
                     <h3 id="footer-heading">PDFMagic</h3>
                     <p>Free online PDF tools to solve all your document problems. Fast, secure, and easy to use.</p>
                     <div class="social-icons">
-                        <a href="#" aria-label="Follow us on Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
-                        <a href="#" aria-label="Follow us on Twitter"><i class="fab fa-twitter" aria-hidden="true"></i></a>
-                        <a href="#" aria-label="Follow us on Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
-                        <a href="#" aria-label="Follow us on LinkedIn"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
+                        <a href="https://www.facebook.com/pdfmagic" aria-label="Follow us on Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+                        <a href="https://www.twitter.com/pdfmagic" aria-label="Follow us on Twitter"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+                        <a href="https://www.instagram.com/pdfmagic" aria-label="Follow us on Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                        <a href="https://www.linkedin.com/company/pdfmagic" aria-label="Follow us on LinkedIn"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
                     </div>
                 </div>
                 
                 <div class="footer-column">
                     <h3>Tools</h3>
                     <ul>
-                        <li><a href="#" aria-label="Merge multiple PDFs"><i class="fas fa-chevron-right" aria-hidden="true"></i> Merge PDF</a></li>
-                        <li><a href="#" aria-label="Split PDF into multiple files"><i class="fas fa-chevron-right" aria-hidden="true"></i> Split PDF</a></li>
-                        <li><a href="#" aria-label="Compress PDF files"><i class="fas fa-chevron-right" aria-hidden="true"></i> Compress PDF</a></li>
-                        <li><a href="#" aria-label="Convert JPG to PDF"><i class="fas fa-chevron-right" aria-hidden="true"></i> JPG to PDF</a></li>
-                        <li><a href="#" aria-label="Edit PDF files"><i class="fas fa-chevron-right" aria-hidden="true"></i> Edit PDF</a></li>
+                        <li><a href="merge-pdf.html" aria-label="Merge multiple PDFs"><i class="fas fa-chevron-right" aria-hidden="true"></i> Merge PDF</a></li>
+                        <li><a href="split-pdf.html" aria-label="Split PDF into multiple files"><i class="fas fa-chevron-right" aria-hidden="true"></i> Split PDF</a></li>
+                        <li><a href="compress-pdf.html" aria-label="Compress PDF files"><i class="fas fa-chevron-right" aria-hidden="true"></i> Compress PDF</a></li>
+                        <li><a href="jpg-to-pdf.html" aria-label="Convert JPG to PDF"><i class="fas fa-chevron-right" aria-hidden="true"></i> JPG to PDF</a></li>
+                        <li><a href="edit-pdf.html" aria-label="Edit PDF files"><i class="fas fa-chevron-right" aria-hidden="true"></i> Edit PDF</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-column">
                     <h3>Resources</h3>
                     <ul>
-                        <li><a href="#" aria-label="Read our blog"><i class="fas fa-chevron-right" aria-hidden="true"></i> Blog</a></li>
-                        <li><a href="#" aria-label="View tutorials"><i class="fas fa-chevron-right" aria-hidden="true"></i> Tutorials</a></li>
-                        <li><a href="#" aria-label="Visit help center"><i class="fas fa-chevron-right" aria-hidden="true"></i> Help Center</a></li>
-                        <li><a href="#" aria-label="Read FAQs"><i class="fas fa-chevron-right" aria-hidden="true"></i> FAQ</a></li>
+                        <li><a href="blog.html" aria-label="Read our blog"><i class="fas fa-chevron-right" aria-hidden="true"></i> Blog</a></li>
+                        <li><a href="tutorials.html" aria-label="View tutorials"><i class="fas fa-chevron-right" aria-hidden="true"></i> Tutorials</a></li>
+                        <li><a href="help-center.html" aria-label="Visit help center"><i class="fas fa-chevron-right" aria-hidden="true"></i> Help Center</a></li>
+                        <li><a href="faq.html" aria-label="Read FAQs"><i class="fas fa-chevron-right" aria-hidden="true"></i> FAQ</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-column">
                     <h3>Company</h3>
                     <ul>
-                        <li><a href="#" aria-label="About our company"><i class="fas fa-chevron-right" aria-hidden="true"></i> About Us</a></li>
-                        <li><a href="#" aria-label="Contact us"><i class="fas fa-chevron-right" aria-hidden="true"></i> Contact Us</a></li>
-                        <li><a href="#" aria-label="View pricing plans"><i class="fas fa-chevron-right" aria-hidden="true"></i> Pricing</a></li>
-                        <li><a href="#" aria-label="Read our privacy policy"><i class="fas fa-chevron-right" aria-hidden="true"></i> Privacy Policy</a></li>
-                        <li><a href="#" aria-label="Read our terms of service"><i class="fas fa-chevron-right" aria-hidden="true"></i> Terms of Service</a></li>
+                        <li><a href="about.html" aria-label="About our company"><i class="fas fa-chevron-right" aria-hidden="true"></i> About Us</a></li>
+                        <li><a href="contact.html" aria-label="Contact us"><i class="fas fa-chevron-right" aria-hidden="true"></i> Contact Us</a></li>
+                        <li><a href="pricing.html" aria-label="View pricing plans"><i class="fas fa-chevron-right" aria-hidden="true"></i> Pricing</a></li>
+                        <li><a href="privacy-policy.html" aria-label="Read our privacy policy"><i class="fas fa-chevron-right" aria-hidden="true"></i> Privacy Policy</a></li>
+                        <li><a href="terms-of-service.html" aria-label="Read our terms of service"><i class="fas fa-chevron-right" aria-hidden="true"></i> Terms of Service</a></li>
                     </ul>
                 </div>
             </div>
             
             <div class="copyright">
-                <p>&copy; 2023 PDFMagic. All rights reserved.</p>
+                <p>&copy; <span id="current-year"></span> PDFMagic. All rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -841,13 +852,19 @@
     }
     </script>
 
-    <!-- JavaScript for Hamburger and Dropdown Menu -->
+    <!-- JavaScript for Hamburger, Dropdown Menu, and Dynamic Year -->
     <script>
         const hamburger = document.querySelector('.hamburger');
         const navMenu = document.querySelector('nav ul');
         const hamburgerIcon = hamburger.querySelector('i');
         const dropdownToggle = document.querySelector('.dropdown-toggle');
         const dropdownMenu = document.querySelector('.dropdown-menu');
+        const currentYearSpan = document.querySelector('#current-year');
+
+        // Set current year in footer
+        if (currentYearSpan) {
+            currentYearSpan.textContent = new Date().getFullYear();
+        }
 
         // Hamburger menu toggle
         hamburger.addEventListener('click', () => {
