@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Terms and Conditions for using PDFMagic's free online PDF tools. Understand your rights and responsibilities.">
+    <meta name="keywords" content="PDFMagic, terms and conditions, terms of service, PDF tools">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="PDFMagic Team">
+    <title>PDFMagic - Terms and Conditions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e7eb 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: #ffffff;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 0.625rem 0;
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .logo i {
+            font-size: 2rem;
+            color: #e74c3c;
+            margin-right: 0.75rem;
+        }
+
+        .logo h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(1.5rem, 4vw, 1.625rem);
+            font-weight: 700;
+            color: #2c3e50;
+            background: linear-gradient(45deg, #3498db, #8e44ad);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+        }
+
+        nav ul li {
+            margin-left: 1.25rem;
+            position: relative;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #ffffff;
+            font-weight: 500;
+            font-size: clamp(0.875rem, 2.5vw, 1rem);
+            padding: 0.5rem 1rem;
+            background: linear-gradient(135deg, #3498db, #8e44ad);
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            border: 1px solid transparent;
+        }
+
+        nav ul li a:hover {
+            background: #e74c3c;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        nav ul li a:focus {
+            outline: 2px solid #e74c3c;
+            outline-offset: 2px;
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-toggle::after {
+            content: '\f078';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            margin-left: 0.5rem;
+            font-size: 0.8rem;
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #ffffff;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            min-width: 200px;
+            z-index: 1000;
+            border-radius: 0.5rem;
+            padding: 0.5rem 0;
+        }
+
+        .dropdown:hover .dropdown-menu,
+        .dropdown-menu.active {
+            display: block;
+        }
+
+        .dropdown-menu li {
+            margin: 0;
+            padding: 0.5rem 1rem;
+        }
+
+        .dropdown-menu li a {
+            justify-content: flex-start;
+            padding: 0.5rem 1rem;
+            font-size: 0.95rem;
+            background: linear-gradient(135deg, #3498db, #8e44ad);
+            color: #ffffff;
+            border-radius: 0.5rem;
+            margin: 0.25rem 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .dropdown-menu li a:hover {
+            background: #e74c3c;
+            color: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        .hamburger {
+            display: none;
+            font-size: 1.5rem;
+            color: #2c3e50;
+            cursor: pointer;
+            padding: 0.625rem;
+            border: none;
+            background: none;
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            nav ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: #ffffff;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+                padding: 1.25rem 0;
+                z-index: 999;
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            nav ul li {
+                margin: 0.625rem 0;
+                text-align: center;
+            }
+
+            nav ul li a {
+                font-size: 1.125rem;
+                padding: 0.75rem 1.5rem;
+                justify-content: center;
+                margin: 0.25rem 1rem;
+            }
+
+            .dropdown-menu {
+                position: static;
+                box-shadow: none;
+                background-color: #f8f9fa;
+                padding: 0.5rem 1.5rem;
+            }
+
+            .dropdown-menu li a {
+                justify-content: center;
+                margin: 0.25rem 0;
+            }
+        }
+
+        /* Main Content Styles */
+        .terms-section {
+            padding: clamp(3rem, 8vw, 5rem) 0;
+            background-color: #ffffff;
+            border-radius: 1.875rem;
+            margin: 3.125rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            color: #2c3e50;
+            margin-bottom: 0.9375rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70px;
+            height: 4px;
+            background: linear-gradient(to right, #3498db, #8e44ad);
+            border-radius: 2px;
+        }
+
+        .terms-content {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: clamp(0.9rem, 2.5vw, 1.05rem);
+            color: #7f8c8d;
+        }
+
+        .terms-content h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(1.3rem, 3.5vw, 1.7rem);
+            color: #2c3e50;
+            margin: 1.5rem 0 0.75rem;
+        }
+
+        .terms-content p {
+            margin-bottom: 1rem;
+        }
+
+        .terms-content ul {
+            list-style-type: disc;
+            margin: 1rem 0 1.5rem 2rem;
+        }
+
+        .terms-content ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Footer Styles */
+        footer {
+            background: linear-gradient(135deg, #2c3e50 0%, #1a252f 100%);
+            color: #ecf0f1;
+            padding: clamp(3rem, 8vw, 5rem) 0 1.875rem;
+            border-radius: 1.875rem 1.875rem 0 0;
+            margin-top: clamp(3rem, 8vw, 4.375rem);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(clamp(180px, 25vw, 200px), 1fr));
+            gap: clamp(1.5rem, 4vw, 2.5rem);
+            margin-bottom: 3.125rem;
+        }
+
+        .footer-column h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            margin-bottom: 1.5625rem;
+            color: white;
+            position: relative;
+            padding-bottom: 0.625rem;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: #3498db;
+            border-radius: 2px;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-column ul li a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: clamp(0.875rem, 2.5vw, 1.05rem);
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-column ul li a i {
+            margin-right: 0.5rem;
+        }
+
+        .footer-column ul li a:hover {
+            color: white;
+            padding-left: 0.3125rem;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 0.9375rem;
+            margin-top: 1.5625rem;
+        }
+
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background-color: #34495e;
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s;
+            font-size: 1.2rem;
+        }
+
+        .social-icons a:hover {
+            background: linear-gradient(135deg, #3498db, #8e44ad);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 1.875rem;
+            border-top: 1px solid #34495e;
+            color: #bdc3c7;
+            font-size: clamp(0.875rem, 2.5vw, 1rem);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header {
+                padding: 0.9375rem 0;
+            }
+
+            .terms-section {
+                padding: clamp(2.5rem, 6vw, 3.75rem) 0;
+            }
+
+            .section-title h2 {
+                font-size: clamp(1.5rem, 4vw, 2.2rem);
+            }
+
+            .terms-content {
+                font-size: clamp(0.85rem, 2.5vw, 1rem);
+            }
+
+            .terms-content h3 {
+                font-size: clamp(1.2rem, 3vw, 1.5rem);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo h1 {
+                font-size: clamp(1.2rem, 3.5vw, 1.5rem);
+            }
+
+            .logo i {
+                font-size: 1.5rem;
+            }
+
+            .hamburger {
+                font-size: 1.25rem;
+            }
+
+            .section-title h2 {
+                font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .social-icons a {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-top">
+                <a href="index.html" class="logo" aria-label="PDFMagic Home">
+                    <i class="fas fa-file-pdf" aria-hidden="true"></i>
+                    <h1>PDFMagic</h1>
+                </a>
+                <nav role="navigation" aria-label="Main navigation">
+                    <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <ul>
+                        <li><a href="index.html" aria-label="Home page"><i class="fas fa-home" aria-hidden="true"></i> Home</a></li>
+                        <li><a href="about.html" aria-label="About our company"><i class="fas fa-info-circle" aria-hidden="true"></i> About Us</a></li>
+                        <li><a href="contact.html" aria-label="Contact us"><i class="fas fa-envelope" aria-hidden="true"></i> Contact Us</a></li>
+                        <li><a href="privacy-policy.html" aria-label="Read our privacy policy"><i class="fas fa-shield-alt" aria-hidden="true"></i> Privacy Policy</a></li>
+                        <li><a href="terms-of-service.html" aria-label="Read our terms of service"><i class="fas fa-file-contract" aria-hidden="true"></i> Terms of Service</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" aria-label="View all PDF tools" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-tools" aria-hidden="true"></i> All Tools
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="jpg-to-pdf.html" aria-label="Convert JPG to PDF"><i class="fas fa-exchange-alt" aria-hidden="true"></i> JPG to PDF</a></li>
+                                <li><a href="compress-pdf.html" aria-label="Compress PDF files"><i class="fas fa-compress-alt" aria-hidden="true"></i> Compress PDF</a></li>
+                                <li><a href="merge-pdf.html" aria-label="Merge multiple PDFs"><i class="fas fa-object-group" aria-hidden="true"></i> Merge PDF</a></li>
+                                <li><a href="split-pdf.html" aria-label="Split PDF into multiple files"><i class="fas fa-cut" aria-hidden="true"></i> Split PDF</a></li>
+                                <li><a href="edit-pdf.html" aria-label="Edit PDF files"><i class="fas fa-edit" aria-hidden="true"></i> Edit PDF</a></li>
+                                <li><a href="protect-pdf.html" aria-label="Protect PDF files"><i class="fas fa-lock" aria-hidden="true"></i> Protect PDF</a></li>
+                                <li><a href="unlock-pdf.html" aria-label="Unlock PDF files"><i class="fas fa-unlock" aria-hidden="true"></i> Unlock PDF</a></li>
+                                <li><a href="sign-pdf.html" aria-label="Sign PDF files"><i class="fas fa-file-signature" aria-hidden="true"></i> Sign PDF</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <section class="terms-section" aria-labelledby="terms-heading">
+            <div class="container">
+                <div class="section-title">
+                    <h2 id="terms-heading">Terms and Conditions</h2>
+                </div>
+                <div class="terms-content">
+                    <p>Last Updated: July 30, 2025</p>
+                    <p>Welcome to PDFMagic. These Terms and Conditions ("Terms") govern your use of our website and services. By accessing or using our website, you agree to be bound by these Terms. If you do not agree, please do not use our services.</p>
+                    
+                    <h3>1. Use of Services</h3>
+                    <p>You agree to use PDFMagic’s services only for lawful purposes and in accordance with these Terms. You are responsible for all activities conducted under your account.</p>
+                    <ul>
+                        <li>You must be at least 18 years old to use our services.</li>
+                        <li>You may not use our services to upload, process, or distribute any content that is illegal, harmful, or violates third-party rights.</li>
+                        <li>We reserve the right to suspend or terminate access to our services for any user who violates these Terms.</li>
+                    </ul>
+
+                    <h3>2. Intellectual Property</h3>
+                    <p>All content, trademarks, and intellectual property on the PDFMagic website are owned by or licensed to PDFMagic. You may not reproduce, distribute, or create derivative works without our express permission.</p>
+                    <ul>
+                        <li>You retain ownership of any files you upload but grant us a limited license to process them as necessary to provide our services.</li>
+                        <li>You may not use our logo, name, or branding without prior written consent.</li>
+                    </ul>
+
+                    <h3>3. File Processing and Security</h3>
+                    <p>We strive to ensure the security of your files. However, you acknowledge that:</p>
+                    <ul>
+                        <li>Files are processed on our servers and automatically deleted after a set period (typically 24 hours).</li>
+                        <li>We are not responsible for any loss or corruption of files during processing.</li>
+                        <li>You are responsible for maintaining backups of your files.</li>
+                    </ul>
+
+                    <h3>4. Limitation of Liability</h3>
+                    <p>PDFMagic provides its services "as is" without warranties of any kind. We are not liable for any damages arising from your use of our services, including but not limited to data loss or service interruptions.</p>
+
+                    <h3>5. Changes to Terms</h3>
+                    <p>We may update these Terms from time to time. Changes will be posted on this page with an updated "Last Updated" date. Your continued use of our services constitutes acceptance of the updated Terms.</p>
+
+                    <h3>6. Contact Us</h3>
+                    <p>If you have questions about these Terms, please contact us at <a href="mailto:support@pdfmagic.com">support@pdfmagic.com</a>.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer aria-labelledby="footer-heading">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3 id="footer-heading">PDFMagic</h3>
+                    <p>Free online PDF tools to solve all your document problems. Fast, secure, and easy to use.</p>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/pdfmagic" aria-label="Follow us on Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+                        <a href="https://www.twitter.com/pdfmagic" aria-label="Follow us on Twitter"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+                        <a href="https://www.instagram.com/pdfmagic" aria-label="Follow us on Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                        <a href="https://www.linkedin.com/company/pdfmagic" aria-label="Follow us on LinkedIn"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Tools</h3>
+                    <ul>
+                        <li><a href="jpg-to-pdf.html" aria-label="Convert JPG to PDF"><i class="fas fa-chevron-right" aria-hidden="true"></i> JPG to PDF</a></li>
+                        <li><a href="compress-pdf.html" aria-label="Compress PDF files"><i class="fas fa-chevron-right" aria-hidden="true"></i> Compress PDF</a></li>
+                        <li><a href="merge-pdf.html" aria-label="Merge multiple PDFs"><i class="fas fa-chevron-right" aria-hidden="true"></i> Merge PDF</a></li>
+                        <li><a href="split-pdf.html" aria-label="Split PDF into multiple files"><i class="fas fa-chevron-right" aria-hidden="true"></i> Split PDF</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="blog.html" aria-label="Read our blog"><i class="fas fa-chevron-right" aria-hidden="true"></i> Blog</a></li>
+                        <li><a href="tutorials.html" aria-label="View tutorials"><i class="fas fa-chevron-right" aria-hidden="true"></i> Tutorials</a></li>
+                        <li><a href="help-center.html" aria-label="Visit help center"><i class="fas fa-chevron-right" aria-hidden="true"></i> Help Center</a></li>
+                        <li><a href="faq.html" aria-label="Read FAQs"><i class="fas fa-chevron-right" aria-hidden="true"></i> FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="about.html" aria-label="About our company"><i class="fas fa-chevron-right" aria-hidden="true"></i> About Us</a></li>
+                        <li><a href="contact.html" aria-label="Contact us"><i class="fas fa-chevron-right" aria-hidden="true"></i> Contact Us</a></li>
+                        <li><a href="privacy-policy.html" aria-label="Read our privacy policy"><i class="fas fa-chevron-right" aria-hidden="true"></i> Privacy Policy</a></li>
+                        <li><a href="terms-of-service.html" aria-label="Read our terms of service"><i class="fas fa-chevron-right" aria-hidden="true"></i> Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; <span id="current-year"></span> PDFMagic. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('nav ul');
+        const hamburgerIcon = hamburger ? hamburger.querySelector('i') : null;
+        const dropdownToggle = document.querySelector('.dropdown-toggle');
+        const dropdownMenu = document.querySelector('.dropdown-menu');
+        const currentYearSpan = document.querySelector('#current-year');
+
+        if (currentYearSpan) {
+            currentYearSpan.textContent = new Date().getFullYear();
+        }
+
+        if (hamburger && navMenu && hamburgerIcon) {
+            hamburger.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+                const isExpanded = navMenu.classList.contains('active');
+                hamburger.setAttribute('aria-expanded', isExpanded);
+                hamburgerIcon.classList.toggle('fa-bars');
+                hamburgerIcon.classList.toggle('fa-times');
+                if (!isExpanded) {
+                    dropdownMenu.classList.remove('active');
+                    dropdownToggle.setAttribute('aria-expanded', 'false');
+                }
+            });
+        }
+
+        if (dropdownToggle && dropdownMenu) {
+            dropdownToggle.addEventListener('click', (e) => {
+                if (window.innerWidth <= 768) {
+                    e.preventDefault();
+                    dropdownMenu.classList.toggle('active');
+                    const isExpanded = dropdownMenu.classList.contains('active');
+                    dropdownToggle.setAttribute('aria-expanded', isExpanded);
+                }
+            });
+        }
+
+        document.addEventListener('click', (event) => {
+            if (hamburger && navMenu && !hamburger.contains(event.target) && !navMenu.contains(event.target) && navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+                hamburger.setAttribute('aria-expanded', 'false');
+                hamburgerIcon.classList.add('fa-bars');
+                hamburgerIcon.classList.remove('fa-times');
+                dropdownMenu.classList.remove('active');
+                dropdownToggle.setAttribute('aria-expanded', 'false');
+            }
+        });
+    </script>
+</body>
+</html>
