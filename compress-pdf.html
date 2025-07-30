@@ -49,7 +49,6 @@
     <title>Compress PDF Files - PDFMagic</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
     <style>
         * {
             margin: 0;
@@ -72,7 +71,6 @@
             padding: 0 1rem;
         }
 
-        /* Header Styles */
         header {
             background-color: #ffffff;
             box-shadow: 0 2px 15px rgba(0,0,0,0.1);
@@ -157,7 +155,6 @@
             display: none;
         }
 
-        /* Dropdown Menu */
         .dropdown {
             position: relative;
         }
@@ -216,7 +213,6 @@
             outline-offset: 2px;
         }
 
-        /* Hamburger Menu */
         .hamburger {
             display: none;
             font-size: 1.5rem;
@@ -227,7 +223,6 @@
             background: none;
         }
 
-        /* Mobile Menu Styles */
         @media (max-width: 768px) {
             .hamburger {
                 display: block;
@@ -284,7 +279,6 @@
             }
         }
 
-        /* Hero Section */
         .hero {
             background: linear-gradient(135deg, #3498db 0%, #8e44ad 100%);
             color: white;
@@ -326,7 +320,6 @@
             opacity: 0.95;
         }
 
-        /* Tool Section */
         .tool-section {
             padding: clamp(3rem, 8vw, 5rem) 0;
             background-color: #ffffff;
@@ -586,7 +579,6 @@
             font-size: clamp(0.875rem, 2.5vw, 1rem);
         }
 
-        /* Footer */
         footer {
             background: linear-gradient(135deg, #2c3e50 0%, #1a252f 100%);
             color: #ecf0f1;
@@ -680,7 +672,6 @@
             font-size: clamp(0.875rem, 2.5vw, 1rem);
         }
 
-        /* Responsive Design */
         @media (max-width: 992px) {
             .hero h2 {
                 font-size: clamp(1.8rem, 4.5vw, 2.8rem);
@@ -772,7 +763,6 @@
     </style>
 </head>
 <body>
-    <!-- Header -->
     <header>
         <div class="container">
             <div class="header-top">
@@ -811,9 +801,7 @@
         </div>
     </header>
 
-    <!-- Main Content -->
     <main>
-        <!-- Hero Section -->
         <section class="hero" aria-labelledby="hero-heading">
             <div class="container">
                 <h2 id="hero-heading">Compress PDF Files</h2>
@@ -821,7 +809,6 @@
             </div>
         </section>
 
-        <!-- Tool Section -->
         <section class="tool-section" aria-labelledby="tool-heading">
             <div class="container">
                 <div class="section-title">
@@ -884,7 +871,6 @@
         </section>
     </main>
 
-    <!-- Footer -->
     <footer aria-labelledby="footer-heading">
         <div class="container">
             <div class="footer-grid">
@@ -936,7 +922,6 @@
         </div>
     </footer>
 
-    <!-- Schema.org Structured Data -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -947,7 +932,6 @@
     }
     </script>
 
-    <!-- JavaScript for Hamburger, Dropdown Menu, Dynamic Year, and PDF Compressor -->
     <script>
         // Hamburger and Dropdown Menu
         const hamburger = document.querySelector('.hamburger');
@@ -1094,30 +1078,11 @@
 
         function updatePreview() {
             const originalSize = (uploadedFile.size / 1024 / 1024).toFixed(2); // MB
-            const quality = parseInt(qualitySlider.value) / 100; // 0-1 scale
-            const target = parseFloat(targetSize.value) || originalSize;
-            let compressionRatio = 1 - quality;
-
-            // Adjust compression ratio based on additional options
-            if (optimizeImages.checked) compressionRatio += 0.1;
-            if (removeMetadata.checked) compressionRatio += 0.05;
-            if (downsampleImages.checked) compressionRatio += 0.15;
-
-            // Ensure compressionRatio doesn't exceed 1 or go below 0.1
-            compressionRatio = Math.min(1, Math.max(0.1, compressionRatio));
-
-            // Calculate estimated size, ensuring it's not larger than target or original
-            let estimatedSize = originalSize * (1 - compressionRatio);
-            if (target < originalSize) {
-                estimatedSize = Math.min(estimatedSize, target);
-            }
-            estimatedSize = Math.max(0.1, estimatedSize).toFixed(2); // Minimum 0.1 MB
-
             previewContainer.innerHTML = `
                 <div class="preview-item">
                     <p><strong>File:</strong> ${uploadedFile.name}</p>
                     <p><strong>Original Size:</strong> ${originalSize} MB</p>
-                    <p><strong>Estimated Compressed Size:</strong> ${estimatedSize} MB</p>
+                    <p><strong>Estimated Compressed Size:</strong> Depends on server processing</p>
                 </div>
             `;
         }
@@ -1134,6 +1099,10 @@
             previewSection.style.display = 'none';
             previewContainer.innerHTML = '';
             compressBtn.disabled = true;
+            if (lastDownloadUrl) {
+                URL.revokeObjectURL(lastDownloadUrl);
+                lastDownloadUrl = null;
+            }
         });
 
         compressBtn.addEventListener('click', async () => {
@@ -1143,8 +1112,24 @@
             compressBtn.disabled = true;
 
             try {
-                // Simulate compression (client-side limitation)
-                const blob = uploadedFile; // In a real app, this would involve server-side processing
+                const formData = new FormData();
+                formData.append('pdf', uploadedFile);
+                formData.append('targetSize', targetSize.value || '');
+                formData.append('quality', qualitySlider.value);
+                formData.append('optimizeImages', optimizeImages.checked);
+                formData.append('removeMetadata', removeMetadata.checked);
+                formData.append('downsampleImages', downsampleImages.checked);
+
+                const response = await fetch('http://localhost:3000/compress', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (!response.ok) {
+                    throw new Error('Server error during compression');
+                }
+
+                const blob = await response.blob();
                 const url = URL.createObjectURL(blob);
                 
                 if (lastDownloadUrl) {

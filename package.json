@@ -1,0 +1,17 @@
+{
+    "name": "pdfmagic-compress",
+    "version": "1.0.0",
+    "description": "Backend for PDFMagic PDF compression tool",
+    "main": "server.js",
+    "scripts": {
+        "start": "node server.js"
+    },
+    "dependencies": {
+        "express": "^4.17.1",
+        "multer": "^1.4.5-lts.1",
+        "pdf-lib": "^1.17.1",
+        "ghostscript4js": "^5.2.1"
+    },
+    "author": "PDFMagic Team",
+    "license": "MIT"
+}
