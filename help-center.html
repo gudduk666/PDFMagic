@@ -42,11 +42,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Explore the PDFMagic blog for tips, tutorials, and updates on PDF tools and document management.">
-    <meta name="keywords" content="pdfmagic blog, pdf tools tips, document management tutorials">
+    <meta name="description" content="Find answers to common questions, explore tutorials, and get support with PDFMagic’s Help Center.">
+    <meta name="keywords" content="pdfmagic help, pdf tools support, pdf faqs, pdf tutorials">
     <meta name="robots" content="index, follow">
     <meta name="author" content="PDFMagic Team">
-    <title>PDFMagic - Blog</title>
+    <title>Help Center | PDFMagic</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
@@ -325,101 +325,92 @@
             opacity: 0.95;
         }
 
-        /* Section Title */
-        .section-title {
-            text-align: center;
-            margin: 3.75rem 0 2.5rem;
-        }
-
-        .section-title h2 {
-            font-family: 'Poppins', sans-serif;
-            font-size: clamp(1.8rem, 4vw, 2.8rem);
-            color: #2c3e50;
-            margin-bottom: 0.9375rem;
-            position: relative;
-            display: inline-block;
-        }
-
-        .section-title h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 70px;
-            height: 4px;
-            background: linear-gradient(to right, #3498db, #8e44ad);
-            border-radius: 2px;
-        }
-
-        .section-title p {
-            color: #7f8c8d;
-            max-width: 600px;
-            margin: 1.25rem auto 0;
-            font-size: clamp(0.875rem, 2.5vw, 1.1rem);
-        }
-
-        /* Blog Section */
-        .blog-section {
+        /* Help Section */
+        .help-section {
             background-color: #f1f2f6;
             padding: clamp(3rem, 8vw, 5rem) 0;
             border-radius: 1.875rem;
             margin: 3.125rem 0;
         }
 
-        .blog-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(clamp(250px, 30vw, 300px), 1fr));
-            gap: clamp(1.5rem, 4vw, 2.1875rem);
-            max-width: 1200px;
+        .help-content {
+            max-width: 800px;
             margin: 0 auto;
         }
 
-        .blog-card {
+        .help-card {
             background-color: white;
             border-radius: 0.9375rem;
             padding: clamp(1.875rem, 5vw, 2.5rem) 1.875rem;
             box-shadow: 0 10px 25px rgba(0,0,0,0.08);
             text-align: left;
-            transition: transform 0.3s;
+            margin-bottom: 2rem;
         }
 
-        .blog-card:hover {
-            transform: translateY(-8px);
-        }
-
-        .blog-card h3 {
-            font-size: clamp(1.3rem, 3.5vw, 1.7rem);
-            margin-bottom: 0.9375rem;
+        .help-card h1, .help-card h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(1.5rem, 4vw, 2.2rem);
             color: #2c3e50;
+            margin-bottom: 1.25rem;
         }
 
-        .blog-card h3 a {
-            color: #2c3e50;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .blog-card h3 a:hover {
-            color: #e74c3c;
-        }
-
-        .blog-card p {
-            color: #7f8c8d;
+        .help-card p {
+            color: #333;
             font-size: clamp(0.9rem, 2.5vw, 1.05rem);
             margin-bottom: 1.25rem;
         }
 
-        .blog-card .meta {
-            color: #7f8c8d;
-            font-size: clamp(0.8rem, 2vw, 0.9rem);
+        .help-card ul {
+            list-style: none;
+            margin-bottom: 1.25rem;
         }
 
-        .blog-card .meta i {
-            margin-right: 0.5rem;
+        .help-card ul li {
+            margin-bottom: 0.75rem;
+            font-size: clamp(0.9rem, 2.5vw, 1.05rem);
+            color: #333;
+        }
+
+        .help-card ul li strong {
+            color: #2c3e50;
+        }
+
+        .help-card a {
+            color: #3498db;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .help-card a:hover {
+            color: #e74c3c;
+        }
+
+        .help-card .read-more {
+            display: inline-flex;
+            align-items: center;
+            text-decoration: none;
+            color: white;
             background: linear-gradient(135deg, #3498db, #8e44ad);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            padding: 0.625rem 1.25rem;
+            border-radius: 0.5rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .help-card .read-more:hover {
+            background: #e74c3c;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        .help-card .read-more:focus {
+            outline: 2px solid #e74c3c;
+            outline-offset: 2px;
+        }
+
+        .help-card .read-more i {
+            margin-left: 0.5rem;
         }
 
         /* Footer */
@@ -526,8 +517,8 @@
                 font-size: clamp(0.875rem, 2.5vw, 1.1rem);
             }
             
-            .blog-content {
-                grid-template-columns: 1fr;
+            .help-content {
+                padding: 0 1rem;
             }
         }
 
@@ -545,11 +536,11 @@
                 white-space: normal;
             }
             
-            .section-title h2 {
-                font-size: clamp(1.5rem, 4vw, 2.2rem);
+            .help-card h1, .help-card h2 {
+                font-size: clamp(1.3rem, 3.5vw, 1.8rem);
             }
             
-            .blog-card {
+            .help-card {
                 padding: 1.5rem 1rem;
             }
         }
@@ -575,15 +566,7 @@
                 font-size: clamp(0.8rem, 2.5vw, 1rem);
             }
             
-            .section-title h2 {
-                font-size: clamp(1.2rem, 3.5vw, 1.8rem);
-            }
-            
-            .section-title p {
-                font-size: clamp(0.75rem, 2vw, 0.875rem);
-            }
-            
-            .blog-section {
+            .help-section {
                 padding: clamp(2.5rem, 6vw, 3.75rem) 0;
             }
             
@@ -644,36 +627,39 @@
         <!-- Hero Section -->
         <section class="hero" aria-labelledby="hero-heading">
             <div class="container">
-                <h2 id="hero-heading">PDFMagic Blog</h2>
-                <p>Discover tips, tutorials, and updates on PDF tools and document management.</p>
+                <h2 id="hero-heading">PDFMagic Help Center</h2>
+                <p>Get help with our free PDF tools through FAQs, tutorials, and direct support.</p>
             </div>
         </section>
 
-        <!-- Blog Section -->
-        <section class="blog-section" aria-labelledby="blog-heading">
+        <!-- Help Section -->
+        <section class="help-section" aria-labelledby="help-heading">
             <div class="container">
-                <div class="section-title">
-                    <h2 id="blog-heading">Latest Posts</h2>
-                    <p>Stay informed with our latest articles on PDF tools and productivity.</p>
-                </div>
-                
-                <div class="blog-content">
-                    <article class="blog-card" aria-labelledby="post-1-heading">
-                        <h3 id="post-1-heading"><a href="post-1.html">How to Convert JPG to PDF in 3 Easy Steps</a></h3>
-                        <p>Learn how to quickly convert your images to PDF using PDFMagic’s free tools, perfect for creating professional documents.</p>
-                        <div class="meta"><i class="fas fa-calendar-alt" aria-hidden="true"></i> July 25, 2025</div>
+                <div class="help-content">
+                    <article class="help-card">
+                        <h1 id="help-heading">Frequently Asked Questions</h1>
+                        <ul>
+                            <li><strong>How do I convert a JPG to a PDF?</strong><br>
+                                Use our <a href="jpg-to-pdf.html">JPG to PDF tool</a> to upload your image and convert it instantly. For a detailed guide, check our <a href="tutorial-1.html">tutorial</a>.</li>
+                            <li><strong>Can I reduce the size of my PDF?</strong><br>
+                                Yes, our <a href="compress-pdf.html">Compress PDF tool</a> reduces file size without losing quality. See the <a href="tutorial-2.html">tutorial</a> for steps.</li>
+                            <li><strong>How can I secure my PDF with a password?</strong><br>
+                                Protect your PDF with our <a href="protect-pdf.html">Protect PDF tool</a>. Follow our <a href="tutorial-3.html">tutorial</a> to set passwords and permissions.</li>
+                            <li><strong>Is my data safe with PDFMagic?</strong><br>
+                                We prioritize your privacy. Read our <a href="privacy-policy.html">Privacy Policy</a> for details on how we protect your data.</li>
+                        </ul>
+                        <p>More questions? Visit our <a href="faq.html">FAQ page</a> for a complete list.</p>
+                        <a class="read-more" href="faq.html" aria-label="Read more FAQs">Read More FAQs <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
                     </article>
-                    
-                    <article class="blog-card" aria-labelledby="post-2-heading">
-                        <h3 id="post-2-heading"><a href="post-2.html">Top 5 Tips for Compressing PDFs Without Losing Quality</a></h3>
-                        <p>Discover expert tips to reduce PDF file sizes while maintaining clarity and quality for sharing or storage.</p>
-                        <div class="meta"><i class="fas fa-calendar-alt" aria-hidden="true"></i> July 20, 2025</div>
+                    <article class="help-card">
+                        <h2>Explore Our Tutorials</h2>
+                        <p>Learn how to use our tools with step-by-step guides on converting, compressing, securing, and more.</p>
+                        <a class="read-more" href="tutorials.html" aria-label="View all tutorials">View Tutorials <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
                     </article>
-                    
-                    <article class="blog-card" aria-labelledby="post-3-heading">
-                        <h3 id="post-3-heading"><a href="post-3.html">Why Secure PDFs Matter for Your Business</a></h3>
-                        <p>Explore the importance of protecting your PDF documents and how PDFMagic’s tools can help safeguard your data.</p>
-                        <div class="meta"><i class="fas fa-calendar-alt" aria-hidden="true"></i> July 15, 2025</div>
+                    <article class="help-card">
+                        <h2>Contact Us</h2>
+                        <p>Need further assistance? Our support team is here to help with any PDF-related questions.</p>
+                        <a class="read-more" href="contact.html" aria-label="Contact our support team">Contact Support <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
                     </article>
                 </div>
             </div>
@@ -737,13 +723,20 @@
     {
         "@context": "https://schema.org",
         "@type": "WebPage",
-        "name": "PDFMagic Blog",
-        "url": "https://www.pdfmagic.com/blog.html",
-        "description": "Explore the PDFMagic blog for tips, tutorials, and updates on PDF tools and document management.",
-        "isPartOf": {
-            "@type": "WebSite",
+        "name": "Help Center | PDFMagic",
+        "description": "Find answers to common questions, explore tutorials, and get support with PDFMagic’s Help Center.",
+        "publisher": {
+            "@type": "Organization",
             "name": "PDFMagic",
-            "url": "https://www.pdfmagic.com"
+            "url": "https://www.pdfmagic.com",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://www.pdfmagic.com/logo.png"
+            }
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://www.pdfmagic.com/help-center.html"
         }
     }
     </script>
