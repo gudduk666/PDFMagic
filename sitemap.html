@@ -42,11 +42,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Page not found on PDFMagic. Return to our homepage or explore our free PDF tools and tutorials.">
-    <meta name="keywords" content="pdfmagic 404, page not found, pdf tools">
-    <meta name="robots" content="noindex">
+    <meta name="description" content="Explore the PDFMagic sitemap to find all pages, including free PDF tools, tutorials, help center, and company information.">
+    <meta name="keywords" content="pdfmagic sitemap, pdf tools, website navigation">
+    <meta name="robots" content="index, follow">
     <meta name="author" content="PDFMagic Team">
-    <title>404 - Page Not Found | PDFMagic</title>
+    <title>Sitemap | PDFMagic</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
@@ -325,77 +325,73 @@
             opacity: 0.95;
         }
 
-        /* Error Section */
-        .error-section {
+        /* Sitemap Section */
+        .sitemap-section {
             background-color: #f1f2f6;
             padding: clamp(3rem, 8vw, 5rem) 0;
             border-radius: 1.875rem;
             margin: 3.125rem 0;
         }
 
-        .error-content {
+        .sitemap-content {
             max-width: 800px;
             margin: 0 auto;
         }
 
-        .error-card {
+        .sitemap-card {
             background-color: white;
             border-radius: 0.9375rem;
             padding: clamp(1.875rem, 5vw, 2.5rem) 1.875rem;
             box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-            text-align: center;
+            text-align: left;
         }
 
-        .error-card h1 {
+        .sitemap-card h1 {
             font-family: 'Poppins', sans-serif;
             font-size: clamp(1.8rem, 4vw, 2.8rem);
             color: #2c3e50;
             margin-bottom: 1.25rem;
         }
 
-        .error-card p {
-            font-size: clamp(0.9rem, 2.5vw, 1.05rem);
-            color: #333;
-            margin-bottom: 1.5rem;
+        .sitemap-card h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            color: #2c3e50;
+            margin: 1.5rem 0 0.75rem;
+            position: relative;
+            padding-bottom: 0.5rem;
         }
 
-        .error-card a {
+        .sitemap-card h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: #3498db;
+            border-radius: 2px;
+        }
+
+        .sitemap-card ul {
+            list-style: none;
+            margin-bottom: 1.25rem;
+        }
+
+        .sitemap-card ul li {
+            margin-bottom: 0.75rem;
+            font-size: clamp(0.9rem, 2.5vw, 1.05rem);
+            color: #333;
+        }
+
+        .sitemap-card a {
             color: #3498db;
             text-decoration: none;
             transition: color 0.3s;
         }
 
-        .error-card a:hover {
+        .sitemap-card a:hover {
             color: #e74c3c;
-        }
-
-        .error-card .read-more {
-            display: inline-flex;
-            align-items: center;
-            text-decoration: none;
-            color: white;
-            background: linear-gradient(135deg, #3498db, #8e44ad);
-            padding: 0.625rem 1.25rem;
-            border-radius: 0.5rem;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-            margin: 0.5rem;
-        }
-
-        .error-card .read-more:hover {
-            background: #e74c3c;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-        }
-
-        .error-card .read-more:focus {
-            outline: 2px solid #e74c3c;
-            outline-offset: 2px;
-        }
-
-        .error-card .read-more i {
-            margin-left: 0.5rem;
         }
 
         /* Footer */
@@ -502,7 +498,7 @@
                 font-size: clamp(0.875rem, 2.5vw, 1.1rem);
             }
             
-            .error-content {
+            .sitemap-content {
                 padding: 0 1rem;
             }
         }
@@ -521,11 +517,11 @@
                 white-space: normal;
             }
             
-            .error-card h1 {
+            .sitemap-card h1 {
                 font-size: clamp(1.5rem, 4vw, 2.2rem);
             }
             
-            .error-card {
+            .sitemap-card {
                 padding: 1.5rem 1rem;
             }
         }
@@ -551,7 +547,7 @@
                 font-size: clamp(0.8rem, 2.5vw, 1rem);
             }
             
-            .error-section {
+            .sitemap-section {
                 padding: clamp(2.5rem, 6vw, 3.75rem) 0;
             }
             
@@ -563,11 +559,6 @@
                 width: 40px;
                 height: 40px;
                 font-size: 1rem;
-            }
-            
-            .error-card .read-more {
-                display: block;
-                margin: 0.5rem auto;
             }
         }
     </style>
@@ -617,23 +608,51 @@
         <!-- Hero Section -->
         <section class="hero" aria-labelledby="hero-heading">
             <div class="container">
-                <h2 id="hero-heading">404 - Page Not Found</h2>
-                <p>Oops! The page you're looking for doesn’t exist.</p>
+                <h2 id="hero-heading">PDFMagic Sitemap</h2>
+                <p>Explore all pages on PDFMagic, including our free PDF tools, tutorials, and support resources.</p>
             </div>
         </section>
 
-        <!-- Error Section -->
-        <section class="error-section" aria-labelledby="error-heading">
+        <!-- Sitemap Section -->
+        <section class="sitemap-section" aria-labelledby="sitemap-heading">
             <div class="container">
-                <div class="error-content">
-                    <article class="error-card">
-                        <h1 id="error-heading">We Can’t Find That Page</h1>
-                        <p>It looks like the page you’re trying to access doesn’t exist or may have been moved. Please check the URL or try one of the links below to explore PDFMagic’s free tools and resources.</p>
-                        <p>
-                            <a class="read-more" href="index.html" aria-label="Return to homepage">Go to Homepage <i class="fas fa-home" aria-hidden="true"></i></a>
-                            <a class="read-more" href="tutorials.html" aria-label="View tutorials">Explore Tutorials <i class="fas fa-book" aria-hidden="true"></i></a>
-                            <a class="read-more" href="help-center.html" aria-label="Visit help center">Get Help <i class="fas fa-question-circle" aria-hidden="true"></i></a>
-                        </p>
+                <div class="sitemap-content">
+                    <article class="sitemap-card">
+                        <h1 id="sitemap-heading">Sitemap</h1>
+                        <h3>Main Pages</h3>
+                        <ul>
+                            <li><a href="index.html" aria-label="Home page">Home</a></li>
+                            <li><a href="about.html" aria-label="About our company">About Us</a></li>
+                            <li><a href="contact.html" aria-label="Contact us">Contact Us</a></li>
+                            <li><a href="privacy-policy.html" aria-label="Read our privacy policy">Privacy Policy</a></li>
+                            <li><a href="terms-of-service.html" aria-label="Read our terms of service">Terms of Service</a></li>
+                        </ul>
+                        <h3>Tools</h3>
+                        <ul>
+                            <li><a href="jpg-to-pdf.html" aria-label="Convert JPG to PDF">JPG to PDF</a></li>
+                            <li><a href="compress-pdf.html" aria-label="Compress PDF files">Compress PDF</a></li>
+                            <li><a href="merge-pdf.html" aria-label="Merge multiple PDFs">Merge PDF</a></li>
+                            <li><a href="split-pdf.html" aria-label="Split PDF into multiple files">Split PDF</a></li>
+                            <li><a href="edit-pdf.html" aria-label="Edit PDF files">Edit PDF</a></li>
+                            <li><a href="protect-pdf.html" aria-label="Protect PDF files">Protect PDF</a></li>
+                            <li><a href="unlock-pdf.html" aria-label="Unlock PDF files">Unlock PDF</a></li>
+                            <li><a href="sign-pdf.html" aria-label="Sign PDF files">Sign PDF</a></li>
+                        </ul>
+                        <h3>Resources</h3>
+                        <ul>
+                            <li><a href="tutorials.html" aria-label="View tutorials">Tutorials</a></li>
+                            <li><a href="tutorial-1.html" aria-label="Tutorial on converting JPG to PDF">Tutorial: Convert JPG to PDF</a></li>
+                            <li><a href="tutorial-2.html" aria-label="Tutorial on compressing PDF files">Tutorial: Compress PDF</a></li>
+                            <li><a href="tutorial-3.html" aria-label="Tutorial on protecting PDF files">Tutorial: Protect PDF</a></li>
+                            <li><a href="help-center.html" aria-label="Visit help center">Help Center</a></li>
+                            <li><a href="faq.html" aria-label="Read FAQs">FAQ</a></li>
+                            <li><a href="blog.html" aria-label="Read our blog">Blog</a></li>
+                            <li><a href="sitemap.html" aria-label="View sitemap">Sitemap</a></li>
+                        </ul>
+                        <h3>Error Page</h3>
+                        <ul>
+                            <li><a href="404.html" aria-label="View 404 error page">404 - Page Not Found</a></li>
+                        </ul>
                     </article>
                 </div>
             </div>
@@ -672,6 +691,7 @@
                         <li><a href="tutorials.html" aria-label="View tutorials"><i class="fas fa-chevron-right" aria-hidden="true"></i> Tutorials</a></li>
                         <li><a href="help-center.html" aria-label="Visit help center"><i class="fas fa-chevron-right" aria-hidden="true"></i> Help Center</a></li>
                         <li><a href="faq.html" aria-label="Read FAQs"><i class="fas fa-chevron-right" aria-hidden="true"></i> FAQ</a></li>
+                        <li><a href="sitemap.html" aria-label="View sitemap"><i class="fas fa-chevron-right" aria-hidden="true"></i> Sitemap</a></li>
                     </ul>
                 </div>
                 
@@ -696,9 +716,9 @@
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
-        "@type": "WebPage",
-        "name": "404 - Page Not Found | PDFMagic",
-        "description": "Page not found on PDFMagic. Return to our homepage or explore our free PDF tools and tutorials.",
+        "@type": "Sitemap",
+        "name": "PDFMagic Sitemap",
+        "description": "Explore all pages on PDFMagic, including our free PDF tools, tutorials, and support resources.",
         "publisher": {
             "@type": "Organization",
             "name": "PDFMagic",
@@ -710,7 +730,7 @@
         },
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "https://www.pdfmagic.com/404.html"
+            "@id": "https://www.pdfmagic.com/sitemap.html"
         }
     }
     </script>
